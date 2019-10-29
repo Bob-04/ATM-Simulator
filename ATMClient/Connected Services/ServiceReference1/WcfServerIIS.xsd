@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:62079/WcfServerIIS.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/KMA.MOOP.ATM.DBModels" />
+  <xs:element name="LoginAccount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="num" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pas" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginAccountResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WithdrawMoney">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/KMA.MOOP.ATM.DBModels" minOccurs="0" name="acc" nillable="true" type="q1:Account" />
+        <xs:element minOccurs="0" name="amount" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WithdrawMoneyResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMoney">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/KMA.MOOP.ATM.DBModels" minOccurs="0" name="acc" nillable="true" type="q2:Account" />
+        <xs:element minOccurs="0" name="amount" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMoneyResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Transfer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/KMA.MOOP.ATM.DBModels" minOccurs="0" name="from" nillable="true" type="q3:Account" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/KMA.MOOP.ATM.DBModels" minOccurs="0" name="to" nillable="true" type="q4:Account" />
+        <xs:element minOccurs="0" name="amount" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TransferResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/KMA.MOOP.ATM.DBModels" minOccurs="0" name="cl" nillable="true" type="q5:Client" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterClientResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAccount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/KMA.MOOP.ATM.DBModels" minOccurs="0" name="cl" nillable="true" type="q6:Client" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/KMA.MOOP.ATM.DBModels" minOccurs="0" name="acc" nillable="true" type="q7:Account" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAccountResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/KMA.MOOP.ATM.DBModels" minOccurs="0" name="oldCl" nillable="true" type="q8:Client" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/KMA.MOOP.ATM.DBModels" minOccurs="0" name="newCl" nillable="true" type="q9:Client" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditClientResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

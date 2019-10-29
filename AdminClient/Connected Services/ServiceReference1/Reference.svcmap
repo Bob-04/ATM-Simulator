@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ea20f3f1-b0eb-4ad9-96d1-7a381f7a80be" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:62079/WcfServerIIS.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WcfServerIIS.xsd" MetadataType="Schema" ID="e2e64500-7cec-4624-b662-1df7091578e6" SourceId="1" SourceUrl="http://localhost:62079/WcfServerIIS.svc?xsd=xsd0" />
+    <MetadataFile FileName="WcfServerIIS1.xsd" MetadataType="Schema" ID="01af12cb-6c7c-42fa-9f1a-efeb96724019" SourceId="1" SourceUrl="http://localhost:62079/WcfServerIIS.svc?xsd=xsd2" />
+    <MetadataFile FileName="WcfServerIIS2.xsd" MetadataType="Schema" ID="bd65cfdd-aed9-4ef3-8874-3af1b05bc025" SourceId="1" SourceUrl="http://localhost:62079/WcfServerIIS.svc?xsd=xsd1" />
+    <MetadataFile FileName="WcfServerIIS.disco" MetadataType="Disco" ID="4c2cc9a1-6eef-45cb-8a20-0453661660e7" SourceId="1" SourceUrl="http://localhost:62079/WcfServerIIS.svc?disco" />
+    <MetadataFile FileName="WcfServerIIS.wsdl" MetadataType="Wsdl" ID="85789505-d2d4-442e-a3a3-45d6176c60ea" SourceId="1" SourceUrl="http://localhost:62079/WcfServerIIS.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
