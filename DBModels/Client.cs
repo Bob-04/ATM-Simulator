@@ -1,43 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KMA.MOOP.ATM.DBModels
 {
+    [Table("Clients")]
     public class Client : IDBModel
     {
-        [DataMember]
         private Guid _guid;
-        [DataMember]
-        private string _firstName;
-        [DataMember]
-        private string _lastName;
-        [DataMember]
-        private string _phone;
-        [DataMember]
+        private long _identificationCode;
         private string _password;
-        [DataMember]
+        private string _phone;
+        private string _firstName;
+        private string _lastName;
         private List<Account> _accounts;
 
+        #region Properties
+
+        [Key, Column("Id")]
         public Guid Guid
         {
             get => _guid;
             private set => _guid = value;
         }
-        public string FirstName
+
+        public long IdentificationCode
         {
-            get => _firstName;
-            private set => _firstName = value;
-        }
-        public string LastName
-        {
-            get => _lastName;
-            private set => _lastName = value;
-        }
-        public string Phone
-        {
-            get => _phone;
-            private set => _phone = value;
+            get => _identificationCode;
+            set => _identificationCode = value;
         }
 
         public string Password
@@ -46,23 +37,46 @@ namespace KMA.MOOP.ATM.DBModels
             set => _password = value;
         }
 
+        public string Phone
+        {
+            get => _phone;
+            set => _phone = value;
+        }
+
+        public string FirstName
+        {
+            get => _firstName;
+            set => _firstName = value;
+        }
+
+        public string LastName
+        {
+            get => _lastName;
+            set => _lastName = value;
+        }
+
         public virtual List<Account> Accounts
         {
             get => _accounts;
             set => _accounts = value;
         }
 
-        public Client(string firstName, string lastName, string phone, string password) : this()
+        #endregion
+
+        public Client(long identificationCode, string firstName, string lastName, 
+            string phone, string password) : this()
         {
-            _guid = Guid.NewGuid();
+            _identificationCode = identificationCode;
             _firstName = firstName;
             _lastName = lastName;
             _phone = phone;
+
             SetPassword(password);
         }
 
-        public Client()
+        private Client()
         {
+            _guid = Guid.NewGuid();
             _accounts = new List<Account>();
         }
 
@@ -72,7 +86,7 @@ namespace KMA.MOOP.ATM.DBModels
             _password = password;
         }
 
-        internal bool CheckPassword(string password)
+        public bool CheckPassword(string password)
         {
             //TODO Compare encrypted passwords
             return _password == password;
@@ -80,7 +94,7 @@ namespace KMA.MOOP.ATM.DBModels
 
         public override string ToString()
         {
-            return $"{LastName} {FirstName}";
+            return $"{FirstName} {LastName}";
         }
     }
 }

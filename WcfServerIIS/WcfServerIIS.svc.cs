@@ -1,4 +1,5 @@
-﻿using KMA.MOOP.ATM.DBModels;
+﻿using System;
+using KMA.MOOP.ATM.DBModels;
 using KMA.MOOP.ATM.Server.Implementation;
 using KMA.MOOP.ATM.Server.Interface;
 
@@ -22,11 +23,6 @@ namespace KMA.MOOP.ATM.Server.WcfServerIIS
             _atmService.LoginAccount(num, pas);
         }
 
-        public void Transfer(Account from, Account to, uint amount)
-        {
-            _atmService.Transfer(from, to, amount);
-        }
-
         public void AddMoney(Account acc, uint amount)
         {
             _atmService.AddMoney(acc, amount);
@@ -37,19 +33,34 @@ namespace KMA.MOOP.ATM.Server.WcfServerIIS
             _atmService.WithdrawMoney(acc, amount);
         }
 
-        public void RegisterClient(Client cl)
+        public void CashSurplusProcessing(Account acc, uint maxBalance, string surplusesNumber)
         {
-            _administratorService.RegisterClient(cl);
+            _atmService.CashSurplusProcessing(acc, maxBalance, surplusesNumber);
         }
 
-        public void AddAccount(Client cl, Account acc)
+        public void LimitExceedingProtection(Account acc, uint minBalance, string securityNumber)
         {
-            _administratorService.AddAccount(cl, acc);
+            _atmService.LimitExceedingProtection(acc, minBalance, securityNumber);
         }
 
-        public void EditClient(Client oldCl, Client newCl)
+        public void AddTransaction(Account acc, string recipientNumber, uint amount, DateTime startTime, DateTime? period = null)
         {
-            _administratorService.EditClient(oldCl, newCl);
+            _atmService.AddTransaction(acc, recipientNumber, amount, startTime, period);
+        }
+
+        public string RegisterClient(Client cl)
+        {
+            return _administratorService.RegisterClient(cl);
+        }
+
+        public Client GetClient(long identificationCode, string password)
+        {
+            return _administratorService.GetClient(identificationCode, password);
+        }
+
+        public string AddAccount(Client cl, Account acc)
+        {
+            return _administratorService.AddAccount(cl, acc);
         }
     }
 }

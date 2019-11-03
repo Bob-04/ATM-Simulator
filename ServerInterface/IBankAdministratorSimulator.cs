@@ -7,12 +7,12 @@ namespace KMA.MOOP.ATM.Server.Interface
     public interface IBankAdministratorSimulator
     {
         [OperationContract]
-        void RegisterClient(Client cl);
+        string RegisterClient(Client cl);
 
         [OperationContract]
-        void AddAccount(Client cl, Account acc);
+        Client GetClient(long identificationCode, string password);
 
         [OperationContract]
-        void EditClient(Client oldCl, Client newCl);
+        string AddAccount(Client cl, Account acc);
     }
 }

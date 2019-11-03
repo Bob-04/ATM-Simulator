@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using System;
+using System.ServiceModel;
 using KMA.MOOP.ATM.DBModels;
 
 namespace KMA.MOOP.ATM.Server.Interface
@@ -10,12 +11,19 @@ namespace KMA.MOOP.ATM.Server.Interface
         void LoginAccount(string num, string pas);
 
         [OperationContract]
-        void WithdrawMoney(Account acc, uint amount);
-
-        [OperationContract]
         void AddMoney(Account acc, uint amount);
 
         [OperationContract]
-        void Transfer(Account from, Account to, uint amount);
+        void WithdrawMoney(Account acc, uint amount);
+
+        [OperationContract]
+        void CashSurplusProcessing(Account acc, uint maxBalance, string surplusesNumber);
+
+        [OperationContract]
+        void LimitExceedingProtection(Account acc, uint minBalance, string securityNumber);
+
+        [OperationContract]
+        void AddTransaction(Account acc, string recipientNumber, uint amount,
+            DateTime startTime, DateTime? period = null);
     }
 }

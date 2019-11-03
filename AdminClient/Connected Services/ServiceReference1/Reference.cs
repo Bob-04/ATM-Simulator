@@ -21,23 +21,35 @@ namespace KMA.MOOP.ATM.Client.AdminClient.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/LoginAccount", ReplyAction="http://tempuri.org/IATMSimulator/LoginAccountResponse")]
         System.Threading.Tasks.Task LoginAccountAsync(string num, string pas);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/WithdrawMoney", ReplyAction="http://tempuri.org/IATMSimulator/WithdrawMoneyResponse")]
-        void WithdrawMoney(KMA.MOOP.ATM.DBModels.Account acc, uint amount);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/WithdrawMoney", ReplyAction="http://tempuri.org/IATMSimulator/WithdrawMoneyResponse")]
-        System.Threading.Tasks.Task WithdrawMoneyAsync(KMA.MOOP.ATM.DBModels.Account acc, uint amount);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/AddMoney", ReplyAction="http://tempuri.org/IATMSimulator/AddMoneyResponse")]
         void AddMoney(KMA.MOOP.ATM.DBModels.Account acc, uint amount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/AddMoney", ReplyAction="http://tempuri.org/IATMSimulator/AddMoneyResponse")]
         System.Threading.Tasks.Task AddMoneyAsync(KMA.MOOP.ATM.DBModels.Account acc, uint amount);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/Transfer", ReplyAction="http://tempuri.org/IATMSimulator/TransferResponse")]
-        void Transfer(KMA.MOOP.ATM.DBModels.Account from, KMA.MOOP.ATM.DBModels.Account to, uint amount);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/WithdrawMoney", ReplyAction="http://tempuri.org/IATMSimulator/WithdrawMoneyResponse")]
+        void WithdrawMoney(KMA.MOOP.ATM.DBModels.Account acc, uint amount);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/Transfer", ReplyAction="http://tempuri.org/IATMSimulator/TransferResponse")]
-        System.Threading.Tasks.Task TransferAsync(KMA.MOOP.ATM.DBModels.Account from, KMA.MOOP.ATM.DBModels.Account to, uint amount);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/WithdrawMoney", ReplyAction="http://tempuri.org/IATMSimulator/WithdrawMoneyResponse")]
+        System.Threading.Tasks.Task WithdrawMoneyAsync(KMA.MOOP.ATM.DBModels.Account acc, uint amount);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/CashSurplusProcessing", ReplyAction="http://tempuri.org/IATMSimulator/CashSurplusProcessingResponse")]
+        void CashSurplusProcessing(KMA.MOOP.ATM.DBModels.Account acc, uint maxBalance, string surplusesNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/CashSurplusProcessing", ReplyAction="http://tempuri.org/IATMSimulator/CashSurplusProcessingResponse")]
+        System.Threading.Tasks.Task CashSurplusProcessingAsync(KMA.MOOP.ATM.DBModels.Account acc, uint maxBalance, string surplusesNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/LimitExceedingProtection", ReplyAction="http://tempuri.org/IATMSimulator/LimitExceedingProtectionResponse")]
+        void LimitExceedingProtection(KMA.MOOP.ATM.DBModels.Account acc, uint minBalance, string securityNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/LimitExceedingProtection", ReplyAction="http://tempuri.org/IATMSimulator/LimitExceedingProtectionResponse")]
+        System.Threading.Tasks.Task LimitExceedingProtectionAsync(KMA.MOOP.ATM.DBModels.Account acc, uint minBalance, string securityNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/AddTransaction", ReplyAction="http://tempuri.org/IATMSimulator/AddTransactionResponse")]
+        void AddTransaction(KMA.MOOP.ATM.DBModels.Account acc, string recipientNumber, uint amount, System.DateTime startTime, System.Nullable<System.DateTime> period);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/AddTransaction", ReplyAction="http://tempuri.org/IATMSimulator/AddTransactionResponse")]
+        System.Threading.Tasks.Task AddTransactionAsync(KMA.MOOP.ATM.DBModels.Account acc, string recipientNumber, uint amount, System.DateTime startTime, System.Nullable<System.DateTime> period);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -75,14 +87,6 @@ namespace KMA.MOOP.ATM.Client.AdminClient.ServiceReference1 {
             return base.Channel.LoginAccountAsync(num, pas);
         }
         
-        public void WithdrawMoney(KMA.MOOP.ATM.DBModels.Account acc, uint amount) {
-            base.Channel.WithdrawMoney(acc, amount);
-        }
-        
-        public System.Threading.Tasks.Task WithdrawMoneyAsync(KMA.MOOP.ATM.DBModels.Account acc, uint amount) {
-            return base.Channel.WithdrawMoneyAsync(acc, amount);
-        }
-        
         public void AddMoney(KMA.MOOP.ATM.DBModels.Account acc, uint amount) {
             base.Channel.AddMoney(acc, amount);
         }
@@ -91,12 +95,36 @@ namespace KMA.MOOP.ATM.Client.AdminClient.ServiceReference1 {
             return base.Channel.AddMoneyAsync(acc, amount);
         }
         
-        public void Transfer(KMA.MOOP.ATM.DBModels.Account from, KMA.MOOP.ATM.DBModels.Account to, uint amount) {
-            base.Channel.Transfer(from, to, amount);
+        public void WithdrawMoney(KMA.MOOP.ATM.DBModels.Account acc, uint amount) {
+            base.Channel.WithdrawMoney(acc, amount);
         }
         
-        public System.Threading.Tasks.Task TransferAsync(KMA.MOOP.ATM.DBModels.Account from, KMA.MOOP.ATM.DBModels.Account to, uint amount) {
-            return base.Channel.TransferAsync(from, to, amount);
+        public System.Threading.Tasks.Task WithdrawMoneyAsync(KMA.MOOP.ATM.DBModels.Account acc, uint amount) {
+            return base.Channel.WithdrawMoneyAsync(acc, amount);
+        }
+        
+        public void CashSurplusProcessing(KMA.MOOP.ATM.DBModels.Account acc, uint maxBalance, string surplusesNumber) {
+            base.Channel.CashSurplusProcessing(acc, maxBalance, surplusesNumber);
+        }
+        
+        public System.Threading.Tasks.Task CashSurplusProcessingAsync(KMA.MOOP.ATM.DBModels.Account acc, uint maxBalance, string surplusesNumber) {
+            return base.Channel.CashSurplusProcessingAsync(acc, maxBalance, surplusesNumber);
+        }
+        
+        public void LimitExceedingProtection(KMA.MOOP.ATM.DBModels.Account acc, uint minBalance, string securityNumber) {
+            base.Channel.LimitExceedingProtection(acc, minBalance, securityNumber);
+        }
+        
+        public System.Threading.Tasks.Task LimitExceedingProtectionAsync(KMA.MOOP.ATM.DBModels.Account acc, uint minBalance, string securityNumber) {
+            return base.Channel.LimitExceedingProtectionAsync(acc, minBalance, securityNumber);
+        }
+        
+        public void AddTransaction(KMA.MOOP.ATM.DBModels.Account acc, string recipientNumber, uint amount, System.DateTime startTime, System.Nullable<System.DateTime> period) {
+            base.Channel.AddTransaction(acc, recipientNumber, amount, startTime, period);
+        }
+        
+        public System.Threading.Tasks.Task AddTransactionAsync(KMA.MOOP.ATM.DBModels.Account acc, string recipientNumber, uint amount, System.DateTime startTime, System.Nullable<System.DateTime> period) {
+            return base.Channel.AddTransactionAsync(acc, recipientNumber, amount, startTime, period);
         }
     }
     
@@ -105,22 +133,28 @@ namespace KMA.MOOP.ATM.Client.AdminClient.ServiceReference1 {
     public interface IBankAdministratorSimulator {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAdministratorSimulator/RegisterClient", ReplyAction="http://tempuri.org/IBankAdministratorSimulator/RegisterClientResponse")]
-        void RegisterClient(KMA.MOOP.ATM.DBModels.Client cl);
+        string RegisterClient(KMA.MOOP.ATM.DBModels.Client cl);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAdministratorSimulator/RegisterClient", ReplyAction="http://tempuri.org/IBankAdministratorSimulator/RegisterClientResponse")]
-        System.Threading.Tasks.Task RegisterClientAsync(KMA.MOOP.ATM.DBModels.Client cl);
+        System.Threading.Tasks.Task<string> RegisterClientAsync(KMA.MOOP.ATM.DBModels.Client cl);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAdministratorSimulator/AddAccount", ReplyAction="http://tempuri.org/IBankAdministratorSimulator/AddAccountResponse")]
-        void AddAccount(KMA.MOOP.ATM.DBModels.Client cl, KMA.MOOP.ATM.DBModels.Account acc);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAdministratorSimulator/GetClient", ReplyAction="http://tempuri.org/IBankAdministratorSimulator/GetClientResponse")]
+        KMA.MOOP.ATM.DBModels.Client GetClient(long identificationCode, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAdministratorSimulator/AddAccount", ReplyAction="http://tempuri.org/IBankAdministratorSimulator/AddAccountResponse")]
-        System.Threading.Tasks.Task AddAccountAsync(KMA.MOOP.ATM.DBModels.Client cl, KMA.MOOP.ATM.DBModels.Account acc);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAdministratorSimulator/EditClient", ReplyAction="http://tempuri.org/IBankAdministratorSimulator/EditClientResponse")]
-        void EditClient(KMA.MOOP.ATM.DBModels.Client oldCl, KMA.MOOP.ATM.DBModels.Client newCl);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAdministratorSimulator/GetClient", ReplyAction="http://tempuri.org/IBankAdministratorSimulator/GetClientResponse")]
+        System.Threading.Tasks.Task<KMA.MOOP.ATM.DBModels.Client> GetClientAsync(long identificationCode, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAdministratorSimulator/EditClient", ReplyAction="http://tempuri.org/IBankAdministratorSimulator/EditClientResponse")]
-        System.Threading.Tasks.Task EditClientAsync(KMA.MOOP.ATM.DBModels.Client oldCl, KMA.MOOP.ATM.DBModels.Client newCl);
+        string EditClient(KMA.MOOP.ATM.DBModels.Client oldCl, KMA.MOOP.ATM.DBModels.Client newCl);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAdministratorSimulator/EditClient", ReplyAction="http://tempuri.org/IBankAdministratorSimulator/EditClientResponse")]
+        System.Threading.Tasks.Task<string> EditClientAsync(KMA.MOOP.ATM.DBModels.Client oldCl, KMA.MOOP.ATM.DBModels.Client newCl);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAdministratorSimulator/AddAccount", ReplyAction="http://tempuri.org/IBankAdministratorSimulator/AddAccountResponse")]
+        string AddAccount(KMA.MOOP.ATM.DBModels.Client cl, KMA.MOOP.ATM.DBModels.Account acc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAdministratorSimulator/AddAccount", ReplyAction="http://tempuri.org/IBankAdministratorSimulator/AddAccountResponse")]
+        System.Threading.Tasks.Task<string> AddAccountAsync(KMA.MOOP.ATM.DBModels.Client cl, KMA.MOOP.ATM.DBModels.Account acc);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -150,28 +184,36 @@ namespace KMA.MOOP.ATM.Client.AdminClient.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public void RegisterClient(KMA.MOOP.ATM.DBModels.Client cl) {
-            base.Channel.RegisterClient(cl);
+        public string RegisterClient(KMA.MOOP.ATM.DBModels.Client cl) {
+            return base.Channel.RegisterClient(cl);
         }
         
-        public System.Threading.Tasks.Task RegisterClientAsync(KMA.MOOP.ATM.DBModels.Client cl) {
+        public System.Threading.Tasks.Task<string> RegisterClientAsync(KMA.MOOP.ATM.DBModels.Client cl) {
             return base.Channel.RegisterClientAsync(cl);
         }
         
-        public void AddAccount(KMA.MOOP.ATM.DBModels.Client cl, KMA.MOOP.ATM.DBModels.Account acc) {
-            base.Channel.AddAccount(cl, acc);
+        public KMA.MOOP.ATM.DBModels.Client GetClient(long identificationCode, string password) {
+            return base.Channel.GetClient(identificationCode, password);
         }
         
-        public System.Threading.Tasks.Task AddAccountAsync(KMA.MOOP.ATM.DBModels.Client cl, KMA.MOOP.ATM.DBModels.Account acc) {
-            return base.Channel.AddAccountAsync(cl, acc);
+        public System.Threading.Tasks.Task<KMA.MOOP.ATM.DBModels.Client> GetClientAsync(long identificationCode, string password) {
+            return base.Channel.GetClientAsync(identificationCode, password);
         }
         
-        public void EditClient(KMA.MOOP.ATM.DBModels.Client oldCl, KMA.MOOP.ATM.DBModels.Client newCl) {
-            base.Channel.EditClient(oldCl, newCl);
+        public string EditClient(KMA.MOOP.ATM.DBModels.Client oldCl, KMA.MOOP.ATM.DBModels.Client newCl) {
+            return base.Channel.EditClient(oldCl, newCl);
         }
         
-        public System.Threading.Tasks.Task EditClientAsync(KMA.MOOP.ATM.DBModels.Client oldCl, KMA.MOOP.ATM.DBModels.Client newCl) {
+        public System.Threading.Tasks.Task<string> EditClientAsync(KMA.MOOP.ATM.DBModels.Client oldCl, KMA.MOOP.ATM.DBModels.Client newCl) {
             return base.Channel.EditClientAsync(oldCl, newCl);
+        }
+        
+        public string AddAccount(KMA.MOOP.ATM.DBModels.Client cl, KMA.MOOP.ATM.DBModels.Account acc) {
+            return base.Channel.AddAccount(cl, acc);
+        }
+        
+        public System.Threading.Tasks.Task<string> AddAccountAsync(KMA.MOOP.ATM.DBModels.Client cl, KMA.MOOP.ATM.DBModels.Account acc) {
+            return base.Channel.AddAccountAsync(cl, acc);
         }
     }
 }

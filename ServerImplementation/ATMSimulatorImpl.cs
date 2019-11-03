@@ -1,4 +1,5 @@
-﻿using KMA.MOOP.ATM.DBModels;
+﻿using System;
+using KMA.MOOP.ATM.DBModels;
 using KMA.MOOP.ATM.Server.Interface;
 
 namespace KMA.MOOP.ATM.Server.Implementation
@@ -7,22 +8,32 @@ namespace KMA.MOOP.ATM.Server.Implementation
     {
         public void LoginAccount(string num, string pas)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void Transfer(Account @from, Account to, uint amount)
-        {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void AddMoney(Account acc, uint amount)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void WithdrawMoney(Account acc, uint amount)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
+        }
+
+        public void CashSurplusProcessing(Account acc, uint maxBalance, string surplusesNumber)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LimitExceedingProtection(Account acc, uint minBalance, string securityNumber)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddTransaction(Account acc, string recipientNumber, uint amount, DateTime startTime, DateTime? period = null)
+        {
+            throw new NotImplementedException();
         }
     }
 }

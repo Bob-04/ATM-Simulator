@@ -13,23 +13,35 @@
   <wsdl:message name="IATMSimulator_LoginAccount_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginAccountResponse" />
   </wsdl:message>
-  <wsdl:message name="IATMSimulator_WithdrawMoney_InputMessage">
-    <wsdl:part name="parameters" element="tns:WithdrawMoney" />
-  </wsdl:message>
-  <wsdl:message name="IATMSimulator_WithdrawMoney_OutputMessage">
-    <wsdl:part name="parameters" element="tns:WithdrawMoneyResponse" />
-  </wsdl:message>
   <wsdl:message name="IATMSimulator_AddMoney_InputMessage">
     <wsdl:part name="parameters" element="tns:AddMoney" />
   </wsdl:message>
   <wsdl:message name="IATMSimulator_AddMoney_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddMoneyResponse" />
   </wsdl:message>
-  <wsdl:message name="IATMSimulator_Transfer_InputMessage">
-    <wsdl:part name="parameters" element="tns:Transfer" />
+  <wsdl:message name="IATMSimulator_WithdrawMoney_InputMessage">
+    <wsdl:part name="parameters" element="tns:WithdrawMoney" />
   </wsdl:message>
-  <wsdl:message name="IATMSimulator_Transfer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:TransferResponse" />
+  <wsdl:message name="IATMSimulator_WithdrawMoney_OutputMessage">
+    <wsdl:part name="parameters" element="tns:WithdrawMoneyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IATMSimulator_CashSurplusProcessing_InputMessage">
+    <wsdl:part name="parameters" element="tns:CashSurplusProcessing" />
+  </wsdl:message>
+  <wsdl:message name="IATMSimulator_CashSurplusProcessing_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CashSurplusProcessingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IATMSimulator_LimitExceedingProtection_InputMessage">
+    <wsdl:part name="parameters" element="tns:LimitExceedingProtection" />
+  </wsdl:message>
+  <wsdl:message name="IATMSimulator_LimitExceedingProtection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LimitExceedingProtectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IATMSimulator_AddTransaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTransaction" />
+  </wsdl:message>
+  <wsdl:message name="IATMSimulator_AddTransaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTransactionResponse" />
   </wsdl:message>
   <wsdl:message name="IBankAdministratorSimulator_RegisterClient_InputMessage">
     <wsdl:part name="parameters" element="tns:RegisterClient" />
@@ -54,17 +66,25 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IATMSimulator/LoginAccount" message="tns:IATMSimulator_LoginAccount_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IATMSimulator/LoginAccountResponse" message="tns:IATMSimulator_LoginAccount_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="WithdrawMoney">
-      <wsdl:input wsaw:Action="http://tempuri.org/IATMSimulator/WithdrawMoney" message="tns:IATMSimulator_WithdrawMoney_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IATMSimulator/WithdrawMoneyResponse" message="tns:IATMSimulator_WithdrawMoney_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="AddMoney">
       <wsdl:input wsaw:Action="http://tempuri.org/IATMSimulator/AddMoney" message="tns:IATMSimulator_AddMoney_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IATMSimulator/AddMoneyResponse" message="tns:IATMSimulator_AddMoney_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Transfer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IATMSimulator/Transfer" message="tns:IATMSimulator_Transfer_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IATMSimulator/TransferResponse" message="tns:IATMSimulator_Transfer_OutputMessage" />
+    <wsdl:operation name="WithdrawMoney">
+      <wsdl:input wsaw:Action="http://tempuri.org/IATMSimulator/WithdrawMoney" message="tns:IATMSimulator_WithdrawMoney_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IATMSimulator/WithdrawMoneyResponse" message="tns:IATMSimulator_WithdrawMoney_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CashSurplusProcessing">
+      <wsdl:input wsaw:Action="http://tempuri.org/IATMSimulator/CashSurplusProcessing" message="tns:IATMSimulator_CashSurplusProcessing_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IATMSimulator/CashSurplusProcessingResponse" message="tns:IATMSimulator_CashSurplusProcessing_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LimitExceedingProtection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IATMSimulator/LimitExceedingProtection" message="tns:IATMSimulator_LimitExceedingProtection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IATMSimulator/LimitExceedingProtectionResponse" message="tns:IATMSimulator_LimitExceedingProtection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTransaction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IATMSimulator/AddTransaction" message="tns:IATMSimulator_AddTransaction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IATMSimulator/AddTransactionResponse" message="tns:IATMSimulator_AddTransaction_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IBankAdministratorSimulator">
@@ -92,15 +112,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="WithdrawMoney">
-      <soap:operation soapAction="http://tempuri.org/IATMSimulator/WithdrawMoney" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="AddMoney">
       <soap:operation soapAction="http://tempuri.org/IATMSimulator/AddMoney" style="document" />
       <wsdl:input>
@@ -110,8 +121,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Transfer">
-      <soap:operation soapAction="http://tempuri.org/IATMSimulator/Transfer" style="document" />
+    <wsdl:operation name="WithdrawMoney">
+      <soap:operation soapAction="http://tempuri.org/IATMSimulator/WithdrawMoney" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CashSurplusProcessing">
+      <soap:operation soapAction="http://tempuri.org/IATMSimulator/CashSurplusProcessing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LimitExceedingProtection">
+      <soap:operation soapAction="http://tempuri.org/IATMSimulator/LimitExceedingProtection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTransaction">
+      <soap:operation soapAction="http://tempuri.org/IATMSimulator/AddTransaction" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

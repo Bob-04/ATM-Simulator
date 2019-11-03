@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministratorUI", "Administ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkWrapper", "EntityFrameworkWrapper\EntityFrameworkWrapper.csproj", "{0BBEEC7D-9FBD-4430-8ACA-2435B1EAA152}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesterFromConsole", "TesterFromConsole\TesterFromConsole.csproj", "{7CE84A6C-0B62-4EF3-A9E5-3E1C947BDA43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{0BBEEC7D-9FBD-4430-8ACA-2435B1EAA152}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BBEEC7D-9FBD-4430-8ACA-2435B1EAA152}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BBEEC7D-9FBD-4430-8ACA-2435B1EAA152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CE84A6C-0B62-4EF3-A9E5-3E1C947BDA43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CE84A6C-0B62-4EF3-A9E5-3E1C947BDA43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CE84A6C-0B62-4EF3-A9E5-3E1C947BDA43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CE84A6C-0B62-4EF3-A9E5-3E1C947BDA43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

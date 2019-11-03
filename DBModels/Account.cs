@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KMA.MOOP.ATM.DBModels
 {
@@ -10,28 +11,28 @@ namespace KMA.MOOP.ATM.DBModels
         BonusAccount
     }
 
-    [DataContract(IsReference = true)]
-    public class Account
+    [Table("Accounts")]
+    public class Account : IDBModel
     {
-        [DataMember]
         private Guid _guid;
-        [DataMember]
         private string _number;
-        [DataMember]
         private string _pin;
-        [DataMember]
-        private uint _amountMoney;
-        [DataMember]
+        private uint _balance;
         private AccountType _accountType;
-        [DataMember]
-        private Guid _ownerGuid;
-        [DataMember]
-        private Client _owner;
+        // Cash Surplus Processing
+        private uint _maxBalance;
+        private Guid _surplusesAccountGuid;
+        // Limit Exceeding Protection
+        private uint _minBalance;
+        private Guid _securityAccountGuid;
 
+        #region Properties
+
+        [Key, Column("Id")]
         public Guid Guid
         {
             get => _guid;
-            set => _guid = value;
+            private set => _guid = value;
         }
 
         public string Number
@@ -46,41 +47,65 @@ namespace KMA.MOOP.ATM.DBModels
             set => _pin = value;
         }
 
+        public uint Balance
+        {
+            get => _balance;
+            set => _balance = value;
+        }
+
         public AccountType AccountType
         {
             get => _accountType;
             set => _accountType = value;
         }
 
-        public int AccountTypeId
+        public uint MaxBalance
         {
-            get => (int)_accountType;
-            set => _accountType = (AccountType)value;
+            get => _maxBalance;
+            set => _maxBalance = value;
         }
 
-        public virtual Client Owner
+        public Guid SurplusesAccountGuid
         {
-            get => _owner;
-            set => _owner = value;
+            get => _surplusesAccountGuid;
+            set => _surplusesAccountGuid = value;
         }
 
-        public Guid OwnerGuid
+        public uint MinBalance
         {
-            get => _ownerGuid;
-            set => _ownerGuid = value;
+            get => _minBalance;
+            set => _minBalance = value;
         }
 
-        public Account(string smth) : this()
+        public Guid SecurityAccountGuid
+        {
+            get => _securityAccountGuid;
+            set => _securityAccountGuid = value;
+        }
+
+        #endregion
+
+        public Account(string number, string pin, AccountType type) : this()
+        {
+            _number = number;
+            _pin = pin;
+            _accountType = type;
+        }
+
+        private Account()
         {
             _guid = Guid.NewGuid();
-            _number = "0000 1242 1231 4324";
-            _pin = "1234";
-            _amountMoney = 0;
-            _accountType = AccountType.CalculatedAccount;
+            _balance = 0;
+
+            _maxBalance = 0;
+            _surplusesAccountGuid = Guid.Empty;
+            _minBalance = 0;
+            _securityAccountGuid = Guid.Empty;
         }
 
-        public Account()
+        public override string ToString()
         {
+            return $"{Number}";
         }
     }
 }

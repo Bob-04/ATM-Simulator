@@ -1,30 +1,34 @@
-﻿using KMA.MOOP.ATM.Client.AdminClient.ServiceReference1;
+﻿using System.Threading.Tasks;
+using KMA.MOOP.ATM.Client.AdminClient.ServiceReference1;
 using KMA.MOOP.ATM.DBModels;
 using IBankAdministratorSimulator = KMA.MOOP.ATM.Server.Interface.IBankAdministratorSimulator;
 
 namespace KMA.MOOP.ATM.Client.AdminClient
 {
-    class AdminClient :IBankAdministratorSimulator
+    public class AdminClient :IBankAdministratorSimulator
     {
-        public void RegisterClient(DBModels.Client cl)
+        public string RegisterClient(DBModels.Client cl)
         {
             BankAdministratorSimulatorClient client = new BankAdministratorSimulatorClient();
-            client.RegisterClient(cl);
+            Task<string> task = client.RegisterClientAsync(cl);
             client.Close();
+            return task.Result;
         }
 
-        public void AddAccount(DBModels.Client cl, Account acc)
+        public DBModels.Client GetClient(long identificationCode, string password)
         {
             BankAdministratorSimulatorClient client = new BankAdministratorSimulatorClient();
-            client.AddAccount(cl, acc);
+            Task<DBModels.Client> task = client.GetClientAsync(identificationCode, password);
             client.Close();
+            return task.Result;
         }
 
-        public void EditClient(DBModels.Client oldCl, DBModels.Client newCl)
+        public string AddAccount(DBModels.Client cl, Account acc)
         {
             BankAdministratorSimulatorClient client = new BankAdministratorSimulatorClient();
-            client.EditClient(oldCl, newCl);
+            Task<string> task = client.AddAccountAsync(cl, acc);
             client.Close();
+            return task.Result;
         }
     }
 }

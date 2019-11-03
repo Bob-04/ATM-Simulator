@@ -1,36 +1,52 @@
-﻿using KMA.MOOP.ATM.Client.ATMClient.ServiceReference1;
+﻿using System;
+using KMA.MOOP.ATM.Client.ATMClient.ServiceReference1;
 using KMA.MOOP.ATM.DBModels;
 using IATMSimulator = KMA.MOOP.ATM.Server.Interface.IATMSimulator;
 
 namespace KMA.MOOP.ATM.Client.ATMClient
 {
-    class ATMClient : IATMSimulator
+    public class ATMClient : IATMSimulator
     {
         public void LoginAccount(string num, string pas)
         {
             ATMSimulatorClient client = new ATMSimulatorClient();
-            client.LoginAccount(num, pas);
-            client.Close();
-        }
-
-        public void WithdrawMoney(Account acc, uint amount)
-        {
-            ATMSimulatorClient client = new ATMSimulatorClient();
-            client.WithdrawMoney(acc, amount);
+            client.LoginAccountAsync(num, pas);
             client.Close();
         }
 
         public void AddMoney(Account acc, uint amount)
         {
             ATMSimulatorClient client = new ATMSimulatorClient();
-            client.AddMoney(acc, amount);
+            client.AddMoneyAsync(acc, amount);
             client.Close();
         }
 
-        public void Transfer(Account @from, Account to, uint amount)
+        public void WithdrawMoney(Account acc, uint amount)
         {
             ATMSimulatorClient client = new ATMSimulatorClient();
-            client.Transfer(from, to, amount);
+            client.WithdrawMoneyAsync(acc, amount);
+            client.Close();
+        }
+
+        public void CashSurplusProcessing(Account acc, uint maxBalance, string surplusesNumber)
+        {
+            ATMSimulatorClient client = new ATMSimulatorClient();
+            client.CashSurplusProcessingAsync(acc, maxBalance, surplusesNumber);
+            client.Close();
+        }
+
+        public void LimitExceedingProtection(Account acc, uint minBalance, string securityNumber)
+        {
+            ATMSimulatorClient client = new ATMSimulatorClient();
+            client.LimitExceedingProtectionAsync(acc, minBalance, securityNumber);
+            client.Close();
+        }
+
+        public void AddTransaction(Account acc, string recipientNumber, uint amount, 
+            DateTime startTime, DateTime? period = null)
+        {
+            ATMSimulatorClient client = new ATMSimulatorClient();
+            client.AddTransactionAsync(acc, recipientNumber, amount, startTime, period);
             client.Close();
         }
     }

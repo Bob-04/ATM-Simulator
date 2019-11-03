@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{52DFDAB5-F186-4938-9A15-3BE96C56606E}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>KMA.MOOP.ATM.Client.AdminClient</RootNamespace>
-    <AssemblyName>AdminClient</AssemblyName>
+    <ProjectGuid>{7CE84A6C-0B62-4EF3-A9E5-3E1C947BDA43}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>TesterFromConsole</RootNamespace>
+    <AssemblyName>TesterFromConsole</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,14 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,58 +43,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminClient.cs" />
-    <Compile Include="Connected Services\ServiceReference1\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Connected Services\ServiceReference1\WcfServerIIS.wsdl" />
-    <None Include="Connected Services\ServiceReference1\WcfServerIIS.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceReference1\WcfServerIIS1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceReference1\WcfServerIIS2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Properties\DataSources\KMA.MOOP.ATM.DBModels.Client.datasource" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AdminClient\AdminClient.csproj">
+      <Project>{52dfdab5-f186-4938-9a15-3be96c56606e}</Project>
+      <Name>AdminClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ATMClient\ATMClient.csproj">
+      <Project>{bf57ae2d-1518-4649-95d7-0bf2436e9001}</Project>
+      <Name>ATMClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DBModels\DBModels.csproj">
       <Project>{95729d5e-4f50-40ce-9d1f-4488186e3b52}</Project>
       <Name>DBModels</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ServerInterface\ServerInterface.csproj">
-      <Project>{a4e0e19f-0703-427e-9396-d516d059208c}</Project>
-      <Name>ServerInterface</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServiceReference1\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceReference1\WcfServerIIS.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceReference1\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceReference1\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceReference1\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
