@@ -1,5 +1,6 @@
 ﻿using System;
 using KMA.MOOP.ATM.Client.AdminClient;
+using KMA.MOOP.ATM.Client.ATMClient;
 using KMA.MOOP.ATM.DBModels;
 
 namespace TesterFromConsole
@@ -17,11 +18,24 @@ namespace TesterFromConsole
                 admin.RegisterClient(client)
             );
 
+            Console.WriteLine(
+                admin.AddAccount(client, new Account("12345678", "2228", AccountType.CreditAccount))
+            );
 
-            Client cl = admin.GetClient(1429, "-1");
+
+            //Client cl = admin.GetClient(1429, "-1");
+
+            //Console.WriteLine(
+            //    admin.AddAccount(cl, new Account("12345677", "2222", AccountType.BonusAccount))
+            //);
+
+            ATMClient atm = new ATMClient();
+
+            Account ac = atm.LoginAccount("12345677", "2222");
 
             Console.WriteLine(
-                admin.AddAccount(cl, new Account("12345677", "2222", AccountType.BonusAccount))
+                atm.AddTransaction(ac, "2222", "12345678",  200, DateTime.Now)
+                //atm.WithdrawMoney(ac, "2222", 100)
             );
 
             Console.Read();

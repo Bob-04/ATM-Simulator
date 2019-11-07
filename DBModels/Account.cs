@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -25,6 +26,8 @@ namespace KMA.MOOP.ATM.DBModels
         // Limit Exceeding Protection
         private uint _minBalance;
         private Guid _securityAccountGuid;
+        // Transactions
+        private List<Transaction> _transactions;
 
         #region Properties
 
@@ -83,6 +86,12 @@ namespace KMA.MOOP.ATM.DBModels
             set => _securityAccountGuid = value;
         }
 
+        public virtual List<Transaction> Transactions
+        {
+            get => _transactions;
+            private set => _transactions = value;
+        }
+
         #endregion
 
         public Account(string number, string pin, AccountType type) : this()
@@ -101,6 +110,8 @@ namespace KMA.MOOP.ATM.DBModels
             _surplusesAccountGuid = Guid.Empty;
             _minBalance = 0;
             _securityAccountGuid = Guid.Empty;
+
+            _transactions = new List<Transaction>();
         }
 
         public override string ToString()

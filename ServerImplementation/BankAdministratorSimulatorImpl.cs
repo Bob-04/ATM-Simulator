@@ -43,7 +43,7 @@ namespace KMA.MOOP.ATM.Server.Implementation
                 if (cl == null || (dbClient = db.Clients.FirstOrDefault(
                         c => c.IdentificationCode == cl.IdentificationCode &&
                              c.CheckPassword(cl.Password))) == null)
-                    return $"Client {cl} doesn't exist";
+                    return "This client doesn't exist";
 
                 dbClient.Accounts.Add(acc);
 

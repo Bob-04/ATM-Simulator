@@ -18,34 +18,35 @@ namespace KMA.MOOP.ATM.Server.WcfServerIIS
             _administratorService = new BankAdministratorSimulatorImpl();
         }
 
-        public void LoginAccount(string num, string pas)
+        public Account LoginAccount(string num, string pin)
         {
-            _atmService.LoginAccount(num, pas);
+            return _atmService.LoginAccount(num, pin);
         }
 
-        public void AddMoney(Account acc, uint amount)
+        public string AddMoney(Account acc, uint amount)
         {
-            _atmService.AddMoney(acc, amount);
+            return _atmService.AddMoney(acc, amount);
         }
 
-        public void WithdrawMoney(Account acc, uint amount)
+        public string WithdrawMoney(Account acc, string pin, uint amount)
         {
-            _atmService.WithdrawMoney(acc, amount);
+            return _atmService.WithdrawMoney(acc, pin, amount);
         }
 
-        public void CashSurplusProcessing(Account acc, uint maxBalance, string surplusesNumber)
+        public string CashSurplusProcessing(Account acc, string pin, uint maxBalance, string surplusesNumber)
         {
-            _atmService.CashSurplusProcessing(acc, maxBalance, surplusesNumber);
+            return _atmService.CashSurplusProcessing(acc, pin, maxBalance, surplusesNumber);
         }
 
-        public void LimitExceedingProtection(Account acc, uint minBalance, string securityNumber)
+        public string LimitExceedingProtection(Account acc, string pin, uint minBalance, string securityNumber)
         {
-            _atmService.LimitExceedingProtection(acc, minBalance, securityNumber);
+            return _atmService.LimitExceedingProtection(acc, pin, minBalance, securityNumber);
         }
 
-        public void AddTransaction(Account acc, string recipientNumber, uint amount, DateTime startTime, DateTime? period = null)
+        public string AddTransaction(Account acc, string pin, string recipientNumber,
+            uint amount, DateTime startTime, DateTime? period = null)
         {
-            _atmService.AddTransaction(acc, recipientNumber, amount, startTime, period);
+            return _atmService.AddTransaction(acc, pin, recipientNumber, amount, startTime, period);
         }
 
         public string RegisterClient(Client cl)

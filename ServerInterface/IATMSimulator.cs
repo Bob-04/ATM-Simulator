@@ -8,22 +8,22 @@ namespace KMA.MOOP.ATM.Server.Interface
     public interface IATMSimulator
     {
         [OperationContract]
-        void LoginAccount(string num, string pas);
+        Account LoginAccount(string num, string pin);
 
         [OperationContract]
-        void AddMoney(Account acc, uint amount);
+        string AddMoney(Account acc, uint amount);
 
         [OperationContract]
-        void WithdrawMoney(Account acc, uint amount);
+        string WithdrawMoney(Account acc, string pin, uint amount);
 
         [OperationContract]
-        void CashSurplusProcessing(Account acc, uint maxBalance, string surplusesNumber);
+        string CashSurplusProcessing(Account acc, string pin, uint maxBalance, string surplusesNumber);
 
         [OperationContract]
-        void LimitExceedingProtection(Account acc, uint minBalance, string securityNumber);
+        string LimitExceedingProtection(Account acc, string pin, uint minBalance, string securityNumber);
 
         [OperationContract]
-        void AddTransaction(Account acc, string recipientNumber, uint amount,
-            DateTime startTime, DateTime? period = null);
+        string AddTransaction(Account acc, string pin,
+            string recipientNumber, uint amount, DateTime startTime, DateTime? period = null);
     }
 }

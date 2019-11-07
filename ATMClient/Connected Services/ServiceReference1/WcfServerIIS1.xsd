@@ -5,7 +5,6 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="AccountType" type="tns:AccountType" />
       <xs:element minOccurs="0" name="Balance" type="xs:unsignedInt" />
-      <xs:element minOccurs="0" name="Guid" type="ser:guid" />
       <xs:element minOccurs="0" name="MaxBalance" type="xs:unsignedInt" />
       <xs:element minOccurs="0" name="MinBalance" type="xs:unsignedInt" />
       <xs:element minOccurs="0" name="Number" nillable="true" type="xs:string" />
@@ -26,8 +25,11 @@
   <xs:complexType name="Client">
     <xs:sequence>
       <xs:element minOccurs="0" name="Accounts" nillable="true" type="tns:ArrayOfAccount" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdentificationCode" type="xs:long" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Client" nillable="true" type="tns:Client" />
