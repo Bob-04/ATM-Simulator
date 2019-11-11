@@ -40,7 +40,7 @@ namespace KMA.MOOP.ATM.UI
         private void LoginClient()
         {
             NavigationManager.Instance.Navigate(ViewType.SignIn);
-            
+            //NavigationManager.Instance.Navigate(ViewType.Replenish);
         }
     }
 }

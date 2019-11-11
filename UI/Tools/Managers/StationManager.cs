@@ -18,7 +18,6 @@ namespace KMA.MOOP.ATM.UI.Tools.Managers
 
         internal static void CloseApp()
         {
-
             MessageBox.Show("ShutDown");
             Environment.Exit(1);
         }
