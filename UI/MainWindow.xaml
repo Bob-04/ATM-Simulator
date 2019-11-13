@@ -6,14 +6,22 @@
         xmlns:local="clr-namespace:KMA.MOOP.ATM.UI"
         mc:Ignorable="d"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
-        Title="MainWindow" Height="580" Width="900">
-    <Grid Margin="10">
+        Title="MainWindow" Height="720" Width="640">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="640"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="700" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Text="ATM" TextAlignment="Center" FontWeight="ExtraBlack" FontSize="50" Foreground="DarkSlateBlue" />
-        <ContentControl Name="_contentControl" Grid.Row="1" IsEnabled="{Binding IsControlEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></ContentControl>
-        <fa:ImageAwesome Name="_loader" Grid.Row="1" Icon="Refresh" Width="50" Height="50" Spin="True" Visibility="{Binding LoaderVisibility, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></fa:ImageAwesome>
+
+        <Image Source="Resource/Back.jpg" Grid.Column="1" Grid.Row="1"/>
+
+        <ContentControl Name="_contentControl" Grid.Column="1" Grid.Row="1" Margin="150,133,107,282" IsEnabled="{Binding IsControlEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></ContentControl>
+        <fa:ImageAwesome Name="_loader" Grid.Column="1" Grid.Row="1" Icon="Refresh" Width="50" Height="50" Spin="True" Visibility="{Binding LoaderVisibility, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="318,264,272,386"/>
     </Grid>
 </Window>

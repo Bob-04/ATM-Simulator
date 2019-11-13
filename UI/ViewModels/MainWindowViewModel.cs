@@ -1,5 +1,6 @@
 ﻿
 using System.Windows;
+using System.Windows.Input;
 using KMA.MOOP.ATM.UI.Tools;
 using KMA.MOOP.ATM.UI.Tools.Managers;
 

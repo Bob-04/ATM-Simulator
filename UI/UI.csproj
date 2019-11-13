@@ -191,7 +191,6 @@
       <Name>DBModels</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resource\100grn.jpg" />
     <Resource Include="Resource\10grn.jpg" />
@@ -202,6 +201,7 @@
     <Resource Include="Resource\500grn.jpg" />
     <Resource Include="Resource\50grn.jpg" />
     <Resource Include="Resource\5grn.jpg" />
+    <Resource Include="Resource\Back.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

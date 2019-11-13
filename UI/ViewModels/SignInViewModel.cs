@@ -68,5 +68,8 @@ namespace KMA.MOOP.ATM.UI.ViewModels
         {
             StationManager.CloseApp();
         }
+
+        
     }
+    
 }
