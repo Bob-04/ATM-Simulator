@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseContext.cs" />
+    <Compile Include="DBImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +143,10 @@
     <ProjectReference Include="..\DBModels\DBModels.csproj">
       <Project>{95729d5e-4f50-40ce-9d1f-4488186e3b52}</Project>
       <Name>DBModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServerInterface\ServerInterface.csproj">
+      <Project>{a4e0e19f-0703-427e-9396-d516d059208c}</Project>
+      <Name>ServerInterface</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

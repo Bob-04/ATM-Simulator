@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using KMA.MOOP.ATM.DBModels;
+﻿using KMA.MOOP.ATM.DBModels;
 using KMA.MOOP.ATM.EntityFrameworkWrapper;
 using KMA.MOOP.ATM.Server.Interface;
 
@@ -7,56 +6,27 @@ namespace KMA.MOOP.ATM.Server.Implementation
 {
     public class BankAdministratorSimulatorImpl :IBankAdministratorSimulator
     {
+        private readonly DBImpl _db;
+
+        public BankAdministratorSimulatorImpl()
+        {
+            _db = new DBImpl();
+        }
+        
+
         public string RegisterClient(Client cl)
         {
-            using (DatabaseContext db = new DatabaseContext())
-            {
-                db.Clients.Add(cl);
-
-                try
-                {
-                    db.SaveChanges();
-                }
-                catch (Microsoft.EntityFrameworkCore.DbUpdateException)
-                {
-                    return "Client with the same Identification Code or Phone already contains";
-                }
-
-                return $"Client {cl} successfully registered";
-            }
+            return _db.RegisterClient(cl);
         }
 
         public Client GetClient(long identificationCode, string password)
         {
-            using (DatabaseContext db = new DatabaseContext())
-            {
-                return db.Clients.FirstOrDefault(
-                    cl => cl.IdentificationCode == identificationCode && cl.CheckPassword(password));
-            }
+            return _db.GetClient(identificationCode, password);
         }
 
         public string AddAccount(Client cl, Account acc)
         {
-            using (DatabaseContext db = new DatabaseContext())
-            {
-                Client dbClient;
-                if (cl == null || (dbClient = db.Clients.FirstOrDefault(
-                        c => c.IdentificationCode == cl.IdentificationCode &&
-                             c.CheckPassword(cl.Password))) == null)
-                    return "This client doesn't exist";
-
-                dbClient.Accounts.Add(acc);
-
-                try
-                {
-                    db.SaveChanges();
-                }
-                catch (Microsoft.EntityFrameworkCore.DbUpdateException)
-                {
-                    return $"Card number {acc} already contains";
-                }
-            }
-            return $"Account successfully added to client {cl}";
+            return _db.AddAccount(cl, acc);
         }
     }
 }

@@ -11,15 +11,15 @@ namespace TesterFromConsole
         {
             AdminClient admin = new AdminClient();
 
-            Client client = new Client(1429,
-                "Vova", "O", "+380667577145", "-1");
+            Client client = new Client(14297,
+                "Bob", "O", "+380667577146", "22");
 
             Console.WriteLine(
                 admin.RegisterClient(client)
             );
 
             Console.WriteLine(
-                admin.AddAccount(client, new Account("12345678", "2228", AccountType.CreditAccount))
+                admin.AddAccount(client, new Account("12345677", "2222", AccountType.CreditAccount))
             );
 
 
@@ -31,11 +31,11 @@ namespace TesterFromConsole
 
             ATMClient atm = new ATMClient();
 
-            Account ac = atm.LoginAccount("12345677", "2222");
+            Account ac = atm.LoginAccount("12345678", "2228");
 
             Console.WriteLine(
-                atm.AddTransaction(ac, "2222", "12345678",  200, DateTime.Now)
-                //atm.WithdrawMoney(ac, "2222", 100)
+                atm.AddTransaction(ac, "2228", "12345677", 200, DateTime.Now)
+            //atm.WithdrawMoney(ac, "2222", 100)
             );
 
             Console.Read();
