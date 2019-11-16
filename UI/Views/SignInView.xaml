@@ -6,6 +6,7 @@
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       xmlns:s="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:KMA.MOOP.ATM.UI.Views"
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       >
@@ -22,7 +23,13 @@
         <!--<xctk:MaskedTextBox x:Name="mask" FontSize="20" Mask="0000 0000 0000 0000"  ValueDataType="{x:Type s:UInt64}" Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  Margin="404,172,240,249.6" />-->
         <TextBox Grid.Row="1" x:Name="mask" FontSize="16" Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" MaxLength="16" PreviewTextInput="NumberValidationTextBox" Height="20" Margin="200,10,30,0" />
         <Label Grid.Row="2" Content="Enter pin-password:" FontSize="20"  Margin="0,0,180,50" Height="35" Width="200" RenderTransformOrigin="0.5,0.5"></Label>
-        <PasswordBox Grid.Row="2" Name="PassBox" Width="100" Height="30" FontSize="26" Margin="120,0,0,50" MaxLength="4" PreviewTextInput="NumberValidationTextBox" PasswordChar="*"/>
+        <PasswordBox Grid.Row="2" Name="PassBox" Width="100" Height="30" FontSize="26" Margin="120,0,0,50" MaxLength="4"  PreviewTextInput="NumberValidationTextBox" PasswordChar="*">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="PasswordChanged">
+                    <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"  CommandParameter="{Binding ElementName=PasswordBox}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </PasswordBox>
         <!--        <Button Grid.Row="2" Width="100" Height="30" FontSize="20" Content="Enter" Command="{Binding SignInCommand}" CommandParameter="{Binding ElementName=PassBox}" Margin="0,50,0,0"></Button> -->
     </Grid>
 </UserControl>

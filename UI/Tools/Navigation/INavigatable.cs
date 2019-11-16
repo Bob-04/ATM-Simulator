@@ -8,6 +8,7 @@ namespace KMA.MOOP.ATM.UI.Tools.Navigation
 {
     internal interface INavigatable
     {
+        object GetContext();
 
     }
 }

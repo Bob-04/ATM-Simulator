@@ -63,10 +63,69 @@ namespace KMA.MOOP.ATM.UI.ViewModels
             return true;// && !string.IsNullOrWhiteSpace(_password);
         }
 
-        public ICommand CancelCommand => _cancelCommand ?? (_cancelCommand = new RelayCommand<object>(CloseExecute));
-        private void CloseExecute(object obj)
+        public override void Press0Implementation(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Press1Implementation(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Press2Implementation(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Press3Implementation(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Press4Implementation(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Press5Implementation(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Press6Implementation(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Press7Implementation(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Press8Implementation(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Press9Implementation(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void ClearImplementation(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void CancelImplementation(object obj)
         {
             NavigationManager.Instance.Navigate(ViewType.Menu);
+        }
+
+        public override void EnterImplementation(object obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using KMA.MOOP.ATM.UI.Tools.Managers;
 using KMA.MOOP.ATM.UI.Views;
 
 namespace KMA.MOOP.ATM.UI.Tools.Navigation
@@ -20,15 +21,11 @@ namespace KMA.MOOP.ATM.UI.Tools.Navigation
 
         public void Navigate(ViewType viewType)
         {
-            if (viewType == ViewType.Menu)
-            {
-                ContentOwner.ContentControl.Content = new MenuView();
-                return;
-            }
 
             if (!ViewsDictionary.ContainsKey(viewType))
                 InitializeView(viewType);
             ContentOwner.ContentControl.Content = ViewsDictionary[viewType];
+            StationManager.CurrentViewModel = (BaseViewModel) ViewsDictionary[viewType].GetContext();
 
         }
 

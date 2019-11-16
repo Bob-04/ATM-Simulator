@@ -9,6 +9,8 @@ namespace KMA.MOOP.ATM.UI.Tools.Managers
     {
         internal static Account CurrentAccount { get; set; }
 
+        internal static BaseViewModel CurrentViewModel { get; set; }
+
         internal static ATMClient ATMClient { get; private set; }
 
         internal static void InitializeATMClient(ATMClient client)

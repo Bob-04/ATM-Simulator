@@ -24,5 +24,10 @@ namespace KMA.MOOP.ATM.UI.Views
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+
+        public object GetContext()
+        {
+            return this.DataContext;
+        }
     }
 }

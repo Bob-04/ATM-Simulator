@@ -1,5 +1,6 @@
 ﻿
 using System.Windows.Controls;
+using KMA.MOOP.ATM.UI.Tools.Managers;
 using KMA.MOOP.ATM.UI.Tools.Navigation;
 using KMA.MOOP.ATM.UI.ViewModels;
 
@@ -14,6 +15,11 @@ namespace KMA.MOOP.ATM.UI.Views
         {
             InitializeComponent();
             DataContext = new MenuViewModel();
+        }
+
+        public object GetContext()
+        {
+            return this.DataContext;
         }
     }
 }
