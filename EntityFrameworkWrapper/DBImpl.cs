@@ -26,6 +26,23 @@ namespace KMA.MOOP.ATM.EntityFrameworkWrapper
                     return "Failed to login account";
 
                 dbAccount.Balance += amount;
+
+                if (dbAccount.SurplusesAccountGuid != Guid.Empty && dbAccount.Balance > dbAccount.MaxBalance)
+                {
+                    Account surplusesAccount =
+                        db.Account.FirstOrDefault(ac => ac.Guid == dbAccount.SurplusesAccountGuid);
+                    if (surplusesAccount == null)
+                    {
+                        dbAccount.MaxBalance = 0;
+                        dbAccount.SurplusesAccountGuid = Guid.Empty;
+                    }
+                    else
+                    {
+                        AddMoney(surplusesAccount, dbAccount.Balance - dbAccount.MaxBalance);
+                        dbAccount.Balance = dbAccount.MaxBalance;
+                    }
+                }
+
                 db.SaveChanges();
                 return "Money successfully credited";
             }
@@ -41,9 +58,46 @@ namespace KMA.MOOP.ATM.EntityFrameworkWrapper
                     return "Failed to login account";
 
                 if (dbAccount.Balance < amount)
-                    return "Not enough money in the account";
+                {
+                    if (dbAccount.SecurityAccountGuid == Guid.Empty)
+                        return "Not enough money in the account";
 
-                dbAccount.Balance -= amount;
+                    Account securityAccount = db.Account.
+                        FirstOrDefault(ac => ac.Guid == dbAccount.SecurityAccountGuid);
+                    if (securityAccount == null)
+                    {
+                        dbAccount.MinBalance = 0;
+                        dbAccount.SecurityAccountGuid = Guid.Empty;
+                        return "Not enough money in the account";
+                    }
+
+                    if (WithdrawMoney(securityAccount, securityAccount.Pin,
+                            amount - dbAccount.Balance) == "Not enough money in the account")
+                        return "Not enough money in the account";
+
+                    dbAccount.Balance = 0;
+                }
+                else
+                {
+                    dbAccount.Balance -= amount;
+                }
+
+                if (dbAccount.Balance < dbAccount.MinBalance)
+                {
+                    if (dbAccount.SecurityAccountGuid == Guid.Empty)
+                        return "Not enough money in the account";
+
+                    Account securityAccount = db.Account.FirstOrDefault(ac => ac.Guid == dbAccount.SecurityAccountGuid);
+                    if (securityAccount == null)
+                    {
+                        dbAccount.MinBalance = 0;
+                        dbAccount.SecurityAccountGuid = Guid.Empty;
+                    }
+                    else if (WithdrawMoney(securityAccount, securityAccount.Pin,
+                                 dbAccount.MinBalance - dbAccount.Balance) == "Money successfully withdraw")
+                        dbAccount.Balance = dbAccount.MinBalance;
+                }
+
                 db.SaveChanges();
                 return "Money successfully withdraw";
             }
@@ -189,33 +243,27 @@ namespace KMA.MOOP.ATM.EntityFrameworkWrapper
 
             using (DatabaseContext db = new DatabaseContext())
             {
-                foreach (Transaction tr in db.Transaction.Where(t => !t.Execute))
+                foreach (Transaction tr in db.Transaction.Where(t => t.TransactionTime <= currentTime))
                 {
-                    if (tr.StartTime <= currentTime)
-                    {
-                        Account recipientAccount = db.Account.
-                            FirstOrDefault(ac => ac.Guid == tr.RecipientAccountGuid);
-                        if (recipientAccount == null)
-                        {
-                            tr.Execute = true;
-                            continue;
-                        }
+                    Account recipientAccount = db.Account.
+                        FirstOrDefault(ac => ac.Guid == tr.RecipientAccountGuid);
+                    if (recipientAccount == null)
+                        db.Transaction.Remove(tr);
 
-                        Account senderAccount = db.Account.
-                            First(ac => ac.Guid == tr.AccountGuid);
+                    Account senderAccount = db.Account.
+                        First(ac => ac.Guid == tr.AccountGuid);
 
-                        WithdrawMoney(senderAccount, senderAccount.Pin, tr.Amount);
+                    if (WithdrawMoney(senderAccount, senderAccount.Pin, tr.Amount) ==
+                        "Money successfully withdraw")
                         AddMoney(recipientAccount, tr.Amount);
 
-                        if (tr.Period != null)
-                            tr.StartTime = tr.StartTime.AddDays(tr.Period.GetValueOrDefault().Day)
-                                .AddMonths(tr.Period.GetValueOrDefault().Month);
-                        else
-                            tr.Execute = true;
-                    }
-
-                    db.SaveChanges();
+                    if (tr.Period != null)
+                        tr.TransactionTime = tr.TransactionTime.AddDays(tr.Period.GetValueOrDefault().Day)
+                            .AddMonths(tr.Period.GetValueOrDefault().Month);
+                    else
+                        db.Transaction.Remove(tr);
                 }
+                db.SaveChanges();
             }
         }
     }

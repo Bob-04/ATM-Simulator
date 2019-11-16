@@ -23,14 +23,14 @@
 
         <ContentControl Name="_contentControl" Grid.Column="1" Panel.ZIndex="6" Grid.Row="1" Width="380" Height="280"  Margin="150,133,107,282" IsEnabled="{Binding IsControlEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></ContentControl>
         <fa:ImageAwesome Name="_loader" Grid.Column="1" Grid.Row="1" Panel.ZIndex="6" Icon="Refresh" Width="50" Height="50" Spin="True" Visibility="{Binding LoaderVisibility, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="318,264,272,386"></fa:ImageAwesome>
-        <Button Grid.Row="1"  Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" IsEnabled="False" Margin="0,0,400,235"/>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" IsEnabled="False" Margin="0,0,400,127"/>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" IsEnabled="False" Margin="0,0,400,20"/>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" IsEnabled="False" Margin="490,0,0,235"/>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" IsEnabled="False" Margin="490,0,0,127"/>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" IsEnabled="False" Margin="490,0,0,20"/>
-        <Button Grid.Row="1"  Grid.Column="1" Panel.ZIndex="10" Content="1" Width="55" Height="30" Margin="0,310,245,0"/>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="2" Width="55" Height="30"  Margin="0,310,110,0"/>
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Margin="0,0,400,235"/>
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Margin="0,0,400,127"/>
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Margin="0,0,400,20"/>
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Margin="490,0,0,235"/>
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Margin="490,0,0,127"/>
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Margin="490,0,0,20"/>
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="1" Width="55" Height="30" Margin="0,310,245,0"/>
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="2" Width="55" Height="30" Margin="0,310,110,0"/>
         <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="3" Width="55" Height="30" Margin="20,310,0,0"/>
         <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="4" Width="55" Height="30"  Margin="0,390,260,0"/>
         <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="5" Width="55" Height="30" Margin="0,390,125,0"/>

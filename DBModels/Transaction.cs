@@ -11,9 +11,8 @@ namespace KMA.MOOP.ATM.DBModels
         private Guid _accountGuid;
         private Guid _recipientAccountGuid;
         private uint _amount;
-        private DateTime _startTime;
+        private DateTime _transactionTime;
         private DateTime? _period;
-        private bool _execute;
 
         [Key, Column("Id")]
         public Guid Guid
@@ -40,22 +39,16 @@ namespace KMA.MOOP.ATM.DBModels
             set => _amount = value;
         }
 
-        public DateTime StartTime
+        public DateTime TransactionTime
         {
-            get => _startTime;
-            set => _startTime = value;
+            get => _transactionTime;
+            set => _transactionTime = value;
         }
 
         public DateTime? Period
         {
             get => _period;
             set => _period = value;
-        }
-
-        public bool Execute
-        {
-            get => _execute;
-            set => _execute = value;
         }
 
 
@@ -65,14 +58,13 @@ namespace KMA.MOOP.ATM.DBModels
             _accountGuid = accountGuid;
             _recipientAccountGuid = recipientAccountGuid;
             _amount = amount;
-            _startTime = startTime;
+            _transactionTime = startTime;
             _period = period;
         }
 
         private Transaction()
         {
             _guid = Guid.NewGuid();
-            _execute = false;
         }
     }
 }
