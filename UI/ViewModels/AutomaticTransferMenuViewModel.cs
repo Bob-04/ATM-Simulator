@@ -1,4 +1,8 @@
 ﻿
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using KMA.MOOP.ATM.UI.Tools;
 using KMA.MOOP.ATM.UI.Tools.Managers;
@@ -8,74 +12,253 @@ namespace KMA.MOOP.ATM.UI.ViewModels
 {
     internal class AutomaticTransferMenuViewModel:BaseViewModel
     {
+        private short _numTextBox = 0;
         private string _cardNumber;
-        private ICommand _cancelCommand;
+        private string _transferSum;
+        private string _selectedDate;
+        private bool _freq0;
+        private bool _freq1;
+        private bool _freq2;
+        private bool _freq3;
 
 
-        public override void Press0Implementation(object obj)
+
+        public bool Freq0
         {
-            throw new System.NotImplementedException();
+            get => _freq0;
+            set
+            {
+                _freq0 = value;
+                OnPropertyChanged();
+            }
         }
 
-        public override void Press1Implementation(object obj)
+        public bool Freq1
         {
-            throw new System.NotImplementedException();
+            get => _freq1;
+            set
+            {
+                _freq1 = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool Freq2
+        {
+            get => _freq2;
+            set
+            {
+                _freq2 = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool Freq3
+        {
+            get => _freq3;
+            set
+            {
+                _freq3 = value;
+                OnPropertyChanged();
+            }
         }
 
-        public override void Press2Implementation(object obj)
+        public string Frequency { get; set; }
+
+        private ICommand _frequencyCommand;
+
+        public ICommand FrequencyCommand => _frequencyCommand ??
+                                         (_frequencyCommand =
+                                             new RelayCommand<object>(FrequencyImplementation));
+
+
+
+        public string CardNumber
         {
-            throw new System.NotImplementedException();
+            get => _cardNumber;
+            set
+            {
+                _cardNumber = value;
+                OnPropertyChanged();
+            }
         }
 
-        public override void Press3Implementation(object obj)
+        public string TransferSum
         {
-            throw new System.NotImplementedException();
+            get => _transferSum;
+            set
+            {
+                _transferSum = value;
+                if (_transferSum.StartsWith("0"))
+                    _transferSum = _transferSum.Substring(1);
+                OnPropertyChanged();
+            }
         }
 
-        public override void Press4Implementation(object obj)
+        public string SelectedDate
         {
-            throw new System.NotImplementedException();
+            get => _selectedDate;
+            set
+            {
+                if (value.Length <= 10)
+                {
+                    _selectedDate = value;
+                    if (_selectedDate.Length == 3)
+                        if (_selectedDate.Last() == '.')
+                            _selectedDate.Remove(2);
+                        else
+                            _selectedDate = _selectedDate.Insert(2, ".");
+
+                    if (_selectedDate.Length == 6)
+                        if (_selectedDate.Last() == '.')
+                            _selectedDate.Remove(5);
+                        else
+                            _selectedDate = _selectedDate.Insert(5, ".");
+
+                    OnPropertyChanged();
+                }
+            }
         }
 
-        public override void Press5Implementation(object obj)
+        public void FrequencyImplementation(object obj)
         {
-            throw new System.NotImplementedException();
+            
+            Frequency = ((string) obj);
         }
 
-        public override void Press6Implementation(object obj)
+        private async void AcceptImplementation(object obj)
         {
-            throw new System.NotImplementedException();
-        }
 
-        public override void Press7Implementation(object obj)
-        {
-            throw new System.NotImplementedException();
-        }
+            LoaderManager.Instance.ShowLoader();
+            string res = "";
+            var result = await Task.Run(() =>
+            {
+                try
+                {
+                    DateTime ? period = null;
+                    switch (Frequency)
+                    {
+                        case "Weekly":
+                            period = new DateTime(0,0,7);
+                            break;
+                        case "Monthly":
+                            period = new DateTime(0,1, 0);
+                            break;
+                        case "Every Year":
+                            period = new DateTime(1, 0, 0);
+                            break;
+                    }
+                    res = StationManager.ATMClient.AddTransaction(StationManager.CurrentAccount, StationManager.CurrentAccount.Pin, 
+                        _cardNumber, Convert.ToUInt32(_transferSum), Convert.ToDateTime(_selectedDate),  period);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Wrong");
+                    return false;
+                }
 
-        public override void Press8Implementation(object obj)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void Press9Implementation(object obj)
-        {
-            throw new System.NotImplementedException();
+                return true;
+            });
+            MessageBox.Show(res);
+            LoaderManager.Instance.HideLoader();
+            if (result)
+            {
+                NavigationManager.Instance.Navigate(ViewType.Menu);
+                CardNumber = "";
+                TransferSum = "00";
+            }
         }
 
         public override void ClearImplementation(object obj)
         {
-            throw new System.NotImplementedException();
+            _numTextBox = 0;
+            CardNumber = "";
+            TransferSum = "00";
+            SelectedDate = "";
         }
 
         public override void CancelImplementation(object obj)
         {
+            ClearImplementation(obj);
             NavigationManager.Instance.Navigate(ViewType.Menu);
-            
+
         }
 
         public override void EnterImplementation(object obj)
         {
-            throw new System.NotImplementedException();
+            AcceptImplementation(obj);
         }
+
+
+        public override void Press0Implementation(object obj) { AddDigit("0"); }
+        public override void Press1Implementation(object obj) { AddDigit("1"); }
+        public override void Press2Implementation(object obj) { AddDigit("2"); }
+        public override void Press3Implementation(object obj) { AddDigit("3"); }
+        public override void Press4Implementation(object obj) { AddDigit("4"); }
+        public override void Press5Implementation(object obj) { AddDigit("5"); }
+        public override void Press6Implementation(object obj) { AddDigit("6"); }
+        public override void Press7Implementation(object obj) { AddDigit("7"); }
+        public override void Press8Implementation(object obj) { AddDigit("8"); }
+        public override void Press9Implementation(object obj) { AddDigit("9");}
+
+        private void AddDigit(string digit)
+        {
+            switch (_numTextBox)
+            {
+                case 0:
+                    CardNumber = CardNumber + digit;
+                    break;
+                case 1:
+                    SelectedDate = SelectedDate + digit;
+                    break;
+                case 2:
+                    TransferSum = TransferSum + digit;
+                    break;
+
+            }
+        }
+
+        public override void Button21Implementation(object obj)
+        {
+            Freq0 = true;
+            Freq1 = false;
+            Freq2 = false;
+            Freq3 = false;
+        }
+
+        public override void Button22Implementation(object obj)
+        {
+            Freq0 = false;
+            Freq1 = true;
+            Freq2 = false;
+            Freq3 = false;
+        }
+
+        public override void Button23Implementation(object obj)
+        {
+            Freq0 = false;
+            Freq1 = false;
+            Freq2 = true;
+            Freq3 = false;
+        }
+
+        public override void Button24Implementation(object obj)
+        {
+            _numTextBox = 0;
+        }
+
+        public override void Button11Implementation(object obj)
+        {
+            _numTextBox = 0;
+        }
+
+        public override void Button12Implementation(object obj)
+        {
+            _numTextBox = 1;
+        }
+        public override void Button13Implementation(object obj)
+        {
+            _numTextBox = 2;
+        }
+
+
     }
 }

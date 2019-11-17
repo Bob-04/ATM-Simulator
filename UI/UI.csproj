@@ -209,5 +209,20 @@
     <Resource Include="Resource\5grn.jpg" />
     <Resource Include="Resource\Back.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\0.jpg" />
+    <Resource Include="Resource\1.jpg" />
+    <Resource Include="Resource\2.jpg" />
+    <Resource Include="Resource\3.jpg" />
+    <Resource Include="Resource\4.jpg" />
+    <Resource Include="Resource\5.jpg" />
+    <Resource Include="Resource\6.jpg" />
+    <Resource Include="Resource\7.jpg" />
+    <Resource Include="Resource\8.jpg" />
+    <Resource Include="Resource\9.jpg" />
+    <Resource Include="Resource\Cancel.jpg" />
+    <Resource Include="Resource\Clear.jpg" />
+    <Resource Include="Resource\Enter.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

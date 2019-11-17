@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 using KMA.MOOP.ATM.UI.Tools;
 using KMA.MOOP.ATM.UI.Tools.Managers;
 using KMA.MOOP.ATM.UI.Tools.Navigation;
@@ -13,24 +9,21 @@ namespace KMA.MOOP.ATM.UI.ViewModels
 {
     internal class WithdrawViewModel:BaseViewModel
     {
-        private uint _withdrawSum;
+        private string _withdrawSum = "0";
 
-        private ICommand _withdrawCommand;
-        private ICommand _cancelCommand;
 
-        public uint WithdrawSum
+        public string WithdrawSum
         {
             get => _withdrawSum;
             set
             {
-                _withdrawSum = value;
-                OnPropertyChanged();
+                    _withdrawSum = value;
+                    if (_withdrawSum.StartsWith("0"))
+                        _withdrawSum = _withdrawSum.Substring(1);
+                    OnPropertyChanged();
+
             }
         }
-
-        public ICommand WithdrawCommand => _withdrawCommand ??
-                                         (_withdrawCommand =
-                                             new RelayCommand<object>(WithdrawImplementation, CanSignInExecute));
 
         private async void WithdrawImplementation(object obj)
         {
@@ -41,9 +34,9 @@ namespace KMA.MOOP.ATM.UI.ViewModels
             {
                 try
                 {
-                    res = StationManager.ATMClient.WithdrawMoney(StationManager.CurrentAccount, StationManager.CurrentAccount.Pin,_withdrawSum);
+                    res = StationManager.ATMClient.WithdrawMoney(StationManager.CurrentAccount, StationManager.CurrentAccount.Pin,Convert.ToUInt32(_withdrawSum));
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Wrong");
                     return false;
@@ -54,78 +47,50 @@ namespace KMA.MOOP.ATM.UI.ViewModels
             LoaderManager.Instance.HideLoader();
             if (result)
             {
-                WithdrawSum = 0;
+                ClearImplementation(obj);
                 MessageBox.Show(res);
             }
-        }
-        private bool CanSignInExecute(object obj)
-        {
-            return true;// && !string.IsNullOrWhiteSpace(_password);
-        }
-
-        public override void Press0Implementation(object obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Press1Implementation(object obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Press2Implementation(object obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Press3Implementation(object obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Press4Implementation(object obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Press5Implementation(object obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Press6Implementation(object obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Press7Implementation(object obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Press8Implementation(object obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Press9Implementation(object obj)
-        {
-            throw new NotImplementedException();
         }
 
         public override void ClearImplementation(object obj)
         {
-            throw new NotImplementedException();
+            WithdrawSum = "00";
         }
 
         public override void CancelImplementation(object obj)
         {
+            ClearImplementation(obj);
             NavigationManager.Instance.Navigate(ViewType.Menu);
         }
 
         public override void EnterImplementation(object obj)
         {
-            throw new NotImplementedException();
+            WithdrawImplementation(obj);
         }
+
+        public override void Press0Implementation(object obj) { AddDigit("0"); }
+        public override void Press1Implementation(object obj) { AddDigit("1"); }
+
+        public override void Press2Implementation(object obj) { AddDigit("2"); }
+
+        public override void Press3Implementation(object obj) { AddDigit("3"); }
+
+        public override void Press4Implementation(object obj) { AddDigit("4"); }
+
+        public override void Press5Implementation(object obj) { AddDigit("5"); }
+
+        public override void Press6Implementation(object obj) { AddDigit("6"); }
+
+        public override void Press7Implementation(object obj) { AddDigit("7"); }
+
+        public override void Press8Implementation(object obj) { AddDigit("8"); }
+
+        public override void Press9Implementation(object obj) { AddDigit("9");}
+
+        private void AddDigit(string digit)
+        {
+            WithdrawSum = WithdrawSum + digit;
+        }
+
     }
 }

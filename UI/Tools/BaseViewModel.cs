@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace KMA.MOOP.ATM.UI.Tools
@@ -22,9 +23,11 @@ namespace KMA.MOOP.ATM.UI.Tools
         private ICommand _button11Command;
         private ICommand _button12Command;
         private ICommand _button13Command;
+        private ICommand _button14Command;
         private ICommand _button21Command;
         private ICommand _button22Command;
         private ICommand _button23Command;
+        private ICommand _button24Command;
 
         public ICommand Press0Command => _press0Command ??
                                          (_press0Command =
@@ -79,6 +82,9 @@ namespace KMA.MOOP.ATM.UI.Tools
         public ICommand Button13Command => _button13Command ??
                                            (_button13Command =
                                                new RelayCommand<object>(Button13Implementation));
+        public ICommand Button14Command => _button14Command ??
+                                           (_button14Command =
+                                               new RelayCommand<object>(Button14Implementation));
         public ICommand Button21Command => _button21Command ??
                                            (_button21Command =
                                                new RelayCommand<object>(Button21Implementation));
@@ -88,6 +94,9 @@ namespace KMA.MOOP.ATM.UI.Tools
         public ICommand Button23Command => _button23Command ??
                                            (_button23Command =
                                                new RelayCommand<object>(Button23Implementation));
+        public ICommand Button24Command => _button24Command ??
+                                           (_button24Command =
+                                               new RelayCommand<object>(Button24Implementation));
 
 
 
@@ -108,9 +117,11 @@ namespace KMA.MOOP.ATM.UI.Tools
         public virtual void Button11Implementation(object obj) { }
         public virtual void Button12Implementation(object obj) { }
         public virtual void Button13Implementation(object obj) { }
+        public virtual void Button14Implementation(object obj) { }
         public virtual void Button21Implementation(object obj) { }
         public virtual void Button22Implementation(object obj) { }
         public virtual void Button23Implementation(object obj) { }
+        public virtual void Button24Implementation(object obj) { }
 
 
 

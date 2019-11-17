@@ -23,52 +23,52 @@
 
         <ContentControl Name="_contentControl" Grid.Column="1" Panel.ZIndex="6" Grid.Row="1" Width="380" Height="280"  Margin="150,133,107,282" IsEnabled="{Binding IsControlEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></ContentControl>
         <fa:ImageAwesome Name="_loader" Grid.Column="1" Grid.Row="1" Panel.ZIndex="6" Icon="Refresh" Width="50" Height="50" Spin="True" Visibility="{Binding LoaderVisibility, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="318,264,272,386"></fa:ImageAwesome>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Margin="0,0,400,235"/>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Margin="0,0,400,127"/>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Margin="0,0,400,20"/>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Margin="490,0,0,235"/>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Margin="490,0,0,127"/>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Margin="490,0,0,20"/>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Margin="103,382,502,293"/>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Margin="548,382,58,293"/>
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Command="{Binding Button11Command}" Margin="0,0,400,235"/>
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Command="{Binding Button12Command}" Margin="0,0,400,127"/>
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Command="{Binding Button13Command}" Margin="0,0,400,20"/>
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Command="{Binding Button14Command}" Margin="103,382,502,293"/>
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Command="{Binding Button21Command}" Margin="490,0,0,235"/>
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Command="{Binding Button22Command}" Margin="490,0,0,127"/>
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Command="{Binding Button23Command}" Margin="490,0,0,20"/>
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" Content="" Width="35" Height="25" Command="{Binding Button24Command}" Margin="548,382,58,293"/>
 
-        <Button Grid.Row="1"  Grid.Column="1" BorderThickness="0" Panel.ZIndex="10" Width="62" Height="32" Margin="0,316,242,0">
+        <Button Grid.Row="1"  Grid.Column="1" BorderThickness="0" Panel.ZIndex="10" Width="62" Height="32" Command="{Binding Press1Command}" Margin="0,316,242,0">
             <Image Source="Resource/1.jpg"/>
         </Button>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="62" Height="32"  Margin="0,316,109,0">
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="62" Height="32" Command="{Binding Press2Command}"  Margin="0,316,109,0">
             <Image Source="Resource/2.jpg"/>
         </Button>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="62" Height="32" Margin="23,316,0,0">
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="62" Height="32" Command="{Binding Press3Command}" Margin="23,316,0,0">
             <Image Source="Resource/3.jpg"/>
         </Button>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="63" Height="34"  Margin="0,392,258,0">
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="63" Height="34" Command="{Binding Press4Command}"  Margin="0,392,258,0">
             <Image Source="Resource/4.jpg"/>
         </Button>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="63" Height="34" Margin="0,392,121,0">
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="63" Height="34" Command="{Binding Press5Command}" Margin="0,392,121,0">
             <Image Source="Resource/5.jpg"/>
         </Button>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="62" Height="34" Margin="14,392,0,0">
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="62" Height="34" Command="{Binding Press6Command}" Margin="14,392,0,0">
             <Image Source="Resource/6.jpg"/>
         </Button>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="66" Height="36" Margin="3,470,275,0">
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="66" Height="36" Command="{Binding Press7Command}" Margin="3,470,275,0">
             <Image Source="Resource/7.jpg"/>
         </Button>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="66" Height="36" Margin="2,470,135,0">
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="66" Height="36" Command="{Binding Press8Command}" Margin="2,470,135,0">
             <Image Source="Resource/8.jpg"/>
         </Button>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="66" Height="36" Margin="4,470,0,0">
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="66" Height="36" Command="{Binding Press9Command}" Margin="4,470,0,0">
             <Image Source="Resource/9.jpg"/>
         </Button>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="66" Height="38" Margin="0,555,146,0">
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="66" Height="38" Command="{Binding Press0Command}" Margin="0,555,146,0">
             <Image Source="Resource/0.jpg"/>
         </Button>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="113" Height="35" Margin="239,317,0,0">
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="113" Height="35" Command="{Binding CancelCommand}" Margin="239,317,0,0">
             <Image Source="Resource/Cancel.jpg"/>
         </Button>
-        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="114" Height="36" Margin="237,396,0,0">
+        <Button Grid.Row="1" Grid.Column="1" Panel.ZIndex="10" BorderThickness="0" Width="114" Height="36" Command="{Binding ClearCommand}" Margin="237,396,0,0">
             <Image Source="Resource/Clear.jpg"/>
         </Button>
-        <Button Grid.Row="1" Grid.Column="1" BorderThickness="0" Width="122" Panel.ZIndex="10" Height="38" Margin="233,556,0,0">
+        <Button Grid.Row="1" Grid.Column="1" BorderThickness="0" Width="122" Panel.ZIndex="10" Height="38" Command="{Binding EnterCommand}" Margin="233,556,0,0">
             <Image Source="Resource/Enter.jpg"/>
         </Button>
     </Grid>

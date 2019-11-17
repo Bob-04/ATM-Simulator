@@ -21,17 +21,9 @@
             <!--          <RowDefinition Height="*"/> -->
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="Limit exceeding protection service" FontSize="20" Height="45" HorizontalAlignment="Center"  Margin="0,0,0,0" Width="320"/>
-        <Label Grid.Row="1" Content="Way of protection:" FontSize="16" Height="45" Width="140" HorizontalAlignment="Center" Margin="0,0,240,0"/>
-        <RadioButton Grid.Row="1" GroupName="CreditType" FontSize="16"  Width="101" Content="Bank credit" Margin="20,0,0,0" />
-        <RadioButton Grid.Row="1" GroupName="CreditType" FontSize="14"  Width="100" Content="Protecting&#10;account" Margin="260,0,0,0" />
         <Label Grid.Row="2" Content="Enter protecting account &#10;              number:" FontSize="12" Width="150" Margin="0,0,220,0"/>
-        <!--<xctk:MaskedTextBox x:Name="mask" FontSize="20" Mask="0000 0000 0000 0000"  ValueDataType="{x:Type s:UInt64}" Text="____ ____ ____ ____" Margin="462,148,182,273.6" />-->
         <TextBox Grid.Row="2" x:Name="mask" FontSize="16" Height="25" Width="150" Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" MaxLength="16" PreviewTextInput="NumberValidationTextBox" Margin="100,0,0,0" />
         <Label Grid.Row="3" Content="Enter minimum balance that triggers service:" Height="40" Width="325" FontSize="16" Margin="0,0,0,0" />
         <TextBox Grid.Row="4" Name="NumberTextBox" Width="100" FontSize="20" Height="30" PreviewTextInput="NumberValidationTextBox" Text="{Binding MinBalance, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="0,0,0,0"/>
-        <Label Grid.Row="5"  Content="Chose start date:" FontSize="16" Height="40" Width="130" Margin="0,0,210,0"/>
-        <DatePicker Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" SelectedDate="{Binding DateOfStart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="80,0,0,5" Height="25" Width="139"/>
-        <!--        <Button Grid.Row="6" Width="120" Height="30" FontSize="16" Content="Accept" Command="{Binding AcceptCommand}" Margin="250,0,0,0" />
-        <Button Grid.Row="6" Width="120" Height="30" FontSize="16" Content="Cancel" Command="{Binding CancelCommand}" Margin="0,0,250,0" /> -->
     </Grid>
 </UserControl>
