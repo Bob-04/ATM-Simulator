@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e698d254-be5f-47e6-b53f-09bba6047055" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e7e663b6-624b-4a07-bf40-420e7f7aef91" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:62079/WcfServerIIS.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="WcfServerIIS.xsd" MetadataType="Schema" ID="6fbdb8bc-a261-4b51-8519-be98ae9e43bd" SourceId="1" SourceUrl="http://localhost:62079/WcfServerIIS.svc?xsd=xsd0" />
-    <MetadataFile FileName="WcfServerIIS1.xsd" MetadataType="Schema" ID="9ce4b650-dd1c-4be7-89be-1f04b413f93f" SourceId="1" SourceUrl="http://localhost:62079/WcfServerIIS.svc?xsd=xsd2" />
-    <MetadataFile FileName="WcfServerIIS2.xsd" MetadataType="Schema" ID="bed7a3f2-7abc-4a7d-9a82-4824c1d44128" SourceId="1" SourceUrl="http://localhost:62079/WcfServerIIS.svc?xsd=xsd1" />
-    <MetadataFile FileName="WcfServerIIS.disco" MetadataType="Disco" ID="6def5807-39e5-4601-b88b-e7ccb39bdd4e" SourceId="1" SourceUrl="http://localhost:62079/WcfServerIIS.svc?disco" />
-    <MetadataFile FileName="WcfServerIIS.wsdl" MetadataType="Wsdl" ID="411bcd76-524c-40fe-adb7-d7b5e1799f78" SourceId="1" SourceUrl="http://localhost:62079/WcfServerIIS.svc?wsdl" />
+    <MetadataFile FileName="WcfServerIIS.xsd" MetadataType="Schema" ID="604a3cc3-f665-4b8b-bb56-6380e146a583" SourceId="1" SourceUrl="http://localhost:62079/WcfServerIIS.svc?xsd=xsd0" />
+    <MetadataFile FileName="WcfServerIIS1.xsd" MetadataType="Schema" ID="8ffa50bb-b72f-4fd0-8028-70335d387889" SourceId="1" SourceUrl="http://localhost:62079/WcfServerIIS.svc?xsd=xsd2" />
+    <MetadataFile FileName="WcfServerIIS2.xsd" MetadataType="Schema" ID="0578c3d4-7fdd-40b0-bc99-8485ef3b6985" SourceId="1" SourceUrl="http://localhost:62079/WcfServerIIS.svc?xsd=xsd1" />
+    <MetadataFile FileName="WcfServerIIS.disco" MetadataType="Disco" ID="8617778e-3ad5-4859-8740-6e066d30f078" SourceId="1" SourceUrl="http://localhost:62079/WcfServerIIS.svc?disco" />
+    <MetadataFile FileName="WcfServerIIS.wsdl" MetadataType="Wsdl" ID="07c57393-7852-4e64-b53b-b8133bdcfcaf" SourceId="1" SourceUrl="http://localhost:62079/WcfServerIIS.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

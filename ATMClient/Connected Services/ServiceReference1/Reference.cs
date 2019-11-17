@@ -46,10 +46,10 @@ namespace KMA.MOOP.ATM.Client.ATMClient.ServiceReference1 {
         System.Threading.Tasks.Task<string> LimitExceedingProtectionAsync(KMA.MOOP.ATM.DBModels.Account acc, string pin, uint minBalance, string securityNumber);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/AddTransaction", ReplyAction="http://tempuri.org/IATMSimulator/AddTransactionResponse")]
-        string AddTransaction(KMA.MOOP.ATM.DBModels.Account acc, string pin, string recipientNumber, uint amount, System.DateTime startTime, System.Nullable<System.DateTime> period);
+        string AddTransaction(KMA.MOOP.ATM.DBModels.Account acc, string pin, string recipientNumber, uint amount, System.DateTime startTime, System.Nullable<double> daysPeriod);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/AddTransaction", ReplyAction="http://tempuri.org/IATMSimulator/AddTransactionResponse")]
-        System.Threading.Tasks.Task<string> AddTransactionAsync(KMA.MOOP.ATM.DBModels.Account acc, string pin, string recipientNumber, uint amount, System.DateTime startTime, System.Nullable<System.DateTime> period);
+        System.Threading.Tasks.Task<string> AddTransactionAsync(KMA.MOOP.ATM.DBModels.Account acc, string pin, string recipientNumber, uint amount, System.DateTime startTime, System.Nullable<double> daysPeriod);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -119,12 +119,12 @@ namespace KMA.MOOP.ATM.Client.ATMClient.ServiceReference1 {
             return base.Channel.LimitExceedingProtectionAsync(acc, pin, minBalance, securityNumber);
         }
         
-        public string AddTransaction(KMA.MOOP.ATM.DBModels.Account acc, string pin, string recipientNumber, uint amount, System.DateTime startTime, System.Nullable<System.DateTime> period) {
-            return base.Channel.AddTransaction(acc, pin, recipientNumber, amount, startTime, period);
+        public string AddTransaction(KMA.MOOP.ATM.DBModels.Account acc, string pin, string recipientNumber, uint amount, System.DateTime startTime, System.Nullable<double> daysPeriod) {
+            return base.Channel.AddTransaction(acc, pin, recipientNumber, amount, startTime, daysPeriod);
         }
         
-        public System.Threading.Tasks.Task<string> AddTransactionAsync(KMA.MOOP.ATM.DBModels.Account acc, string pin, string recipientNumber, uint amount, System.DateTime startTime, System.Nullable<System.DateTime> period) {
-            return base.Channel.AddTransactionAsync(acc, pin, recipientNumber, amount, startTime, period);
+        public System.Threading.Tasks.Task<string> AddTransactionAsync(KMA.MOOP.ATM.DBModels.Account acc, string pin, string recipientNumber, uint amount, System.DateTime startTime, System.Nullable<double> daysPeriod) {
+            return base.Channel.AddTransactionAsync(acc, pin, recipientNumber, amount, startTime, daysPeriod);
         }
     }
     

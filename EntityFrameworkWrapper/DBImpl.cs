@@ -160,7 +160,7 @@ namespace KMA.MOOP.ATM.EntityFrameworkWrapper
         }
 
         public string AddTransaction(Account acc, string pin,
-            string recipientNumber, uint amount, DateTime startTime, DateTime? period = null)
+            string recipientNumber, uint amount, DateTime startTime, double? daysPeriod = null)
         {
             using (DatabaseContext db = new DatabaseContext())
             {
@@ -178,7 +178,7 @@ namespace KMA.MOOP.ATM.EntityFrameworkWrapper
                     return "Failed! Entered recipient number doesn't exist";
 
                 dbAccount.Transactions.Add(new Transaction(acc.Guid,
-                    recipientAccount.Guid, amount, startTime, period));
+                    recipientAccount.Guid, amount, startTime, daysPeriod));
 
                 db.SaveChanges();
                 return "Operation completed successfully!";
@@ -257,9 +257,8 @@ namespace KMA.MOOP.ATM.EntityFrameworkWrapper
                         "Money successfully withdraw")
                         AddMoney(recipientAccount, tr.Amount);
 
-                    if (tr.Period != null)
-                        tr.TransactionTime = tr.TransactionTime.AddDays(tr.Period.GetValueOrDefault().Day)
-                            .AddMonths(tr.Period.GetValueOrDefault().Month);
+                    if (tr.DaysPeriod != null)
+                        tr.TransactionTime = tr.TransactionTime.AddDays((double) tr.DaysPeriod);
                     else
                         db.Transaction.Remove(tr);
                 }

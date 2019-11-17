@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,7 +11,7 @@ namespace KMA.MOOP.ATM.UI.ViewModels
 {
     internal class AutomaticTransferMenuViewModel:BaseViewModel
     {
-        private short _numTextBox = 0;
+        private short _numTextBox;
         private string _cardNumber;
         private string _transferSum;
         private string _selectedDate;
@@ -20,7 +19,6 @@ namespace KMA.MOOP.ATM.UI.ViewModels
         private bool _freq1;
         private bool _freq2;
         private bool _freq3;
-
 
 
         public bool Freq0
@@ -42,6 +40,7 @@ namespace KMA.MOOP.ATM.UI.ViewModels
                 OnPropertyChanged();
             }
         }
+
         public bool Freq2
         {
             get => _freq2;
@@ -51,6 +50,7 @@ namespace KMA.MOOP.ATM.UI.ViewModels
                 OnPropertyChanged();
             }
         }
+
         public bool Freq3
         {
             get => _freq3;
@@ -68,8 +68,6 @@ namespace KMA.MOOP.ATM.UI.ViewModels
         public ICommand FrequencyCommand => _frequencyCommand ??
                                          (_frequencyCommand =
                                              new RelayCommand<object>(FrequencyImplementation));
-
-
 
         public string CardNumber
         {
@@ -120,38 +118,37 @@ namespace KMA.MOOP.ATM.UI.ViewModels
 
         public void FrequencyImplementation(object obj)
         {
-            
-            Frequency = ((string) obj);
+            Frequency = (string) obj;
         }
 
         private async void AcceptImplementation(object obj)
         {
-
             LoaderManager.Instance.ShowLoader();
             string res = "";
             var result = await Task.Run(() =>
             {
                 try
                 {
-                    DateTime ? period = null;
+                    double ? daysPeriod = null;
                     switch (Frequency)
                     {
                         case "Weekly":
-                            period = new DateTime(0,0,7);
+                            daysPeriod = 7;
                             break;
                         case "Monthly":
-                            period = new DateTime(0,1, 0);
+                            daysPeriod = 30;
                             break;
                         case "Every Year":
-                            period = new DateTime(1, 0, 0);
+                            daysPeriod = 365;
                             break;
                     }
-                    res = StationManager.ATMClient.AddTransaction(StationManager.CurrentAccount, StationManager.CurrentAccount.Pin, 
-                        _cardNumber, Convert.ToUInt32(_transferSum), Convert.ToDateTime(_selectedDate),  period);
+                    res = StationManager.ATMClient.AddTransaction(StationManager.CurrentAccount, 
+                        StationManager.CurrentAccount.Pin, _cardNumber, Convert.ToUInt32(_transferSum),
+                        Convert.ToDateTime(_selectedDate), daysPeriod);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Wrong");
+                    MessageBox.Show(ex.Message);
                     return false;
                 }
 
@@ -179,7 +176,6 @@ namespace KMA.MOOP.ATM.UI.ViewModels
         {
             ClearImplementation(obj);
             NavigationManager.Instance.Navigate(ViewType.Menu);
-
         }
 
         public override void EnterImplementation(object obj)
@@ -204,15 +200,14 @@ namespace KMA.MOOP.ATM.UI.ViewModels
             switch (_numTextBox)
             {
                 case 0:
-                    CardNumber = CardNumber + digit;
+                    CardNumber += digit;
                     break;
                 case 1:
-                    SelectedDate = SelectedDate + digit;
+                    SelectedDate += digit;
                     break;
                 case 2:
-                    TransferSum = TransferSum + digit;
+                    TransferSum += digit;
                     break;
-
             }
         }
 
@@ -258,7 +253,6 @@ namespace KMA.MOOP.ATM.UI.ViewModels
         {
             _numTextBox = 2;
         }
-
 
     }
 }

@@ -44,9 +44,9 @@ namespace KMA.MOOP.ATM.Server.WcfServerIIS
         }
 
         public string AddTransaction(Account acc, string pin, string recipientNumber,
-            uint amount, DateTime startTime, DateTime? period = null)
+            uint amount, DateTime startTime, double? daysPeriod = null)
         {
-            return _atmService.AddTransaction(acc, pin, recipientNumber, amount, startTime, period);
+            return _atmService.AddTransaction(acc, pin, recipientNumber, amount, startTime, daysPeriod);
         }
 
         public string RegisterClient(Client cl)

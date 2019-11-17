@@ -80,7 +80,7 @@ namespace KMA.MOOP.ATM.UI.ViewModels
 
         private void AddDigit(string digit)
         {
-            ReplenishSum = digit;
+            ReplenishSum += digit;
         }
     }
 }

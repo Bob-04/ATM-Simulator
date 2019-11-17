@@ -41,9 +41,9 @@ namespace KMA.MOOP.ATM.Server.Implementation
         }
 
         public string AddTransaction(Account acc, string pin, 
-            string recipientNumber, uint amount, DateTime startTime, DateTime? period = null)
+            string recipientNumber, uint amount, DateTime startTime, double? daysPeriod = null)
         {
-            return _db.AddTransaction(acc, pin, recipientNumber, amount, startTime, period);
+            return _db.AddTransaction(acc, pin, recipientNumber, amount, startTime, daysPeriod);
         }
     }
 }

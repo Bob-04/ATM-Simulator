@@ -68,6 +68,7 @@
     <None Include="Connected Services\ServiceReference1\WcfServerIIS2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\KMA.MOOP.ATM.DBModels.Account.datasource" />
     <None Include="Properties\DataSources\KMA.MOOP.ATM.DBModels.Client.datasource" />
   </ItemGroup>
   <ItemGroup>

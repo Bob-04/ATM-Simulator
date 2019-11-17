@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using System.Windows;
 using KMA.MOOP.ATM.DBModels;
@@ -43,7 +42,7 @@ namespace KMA.MOOP.ATM.UI.ViewModels
         {
             Account currentClient = null;
             LoaderManager.Instance.ShowLoader();
-            var result = await Task.Run(() =>
+            await Task.Run(() =>
             {
                 try
                 {
@@ -57,7 +56,7 @@ namespace KMA.MOOP.ATM.UI.ViewModels
                 return true;
             });
             LoaderManager.Instance.HideLoader();
-            if (result)
+            if (currentClient != null)
             {
                 StationManager.CurrentAccount = currentClient;
                 ClearImplementation(obj);

@@ -49,11 +49,11 @@ namespace KMA.MOOP.ATM.Client.ATMClient
         }
 
         public string AddTransaction(Account acc, string pin,
-            string recipientNumber, uint amount, DateTime startTime, DateTime? period = null)
+            string recipientNumber, uint amount, DateTime startTime, double? daysPeriod = null)
         {
             ATMSimulatorClient client = new ATMSimulatorClient();
             Task<string> task = client.AddTransactionAsync(acc, pin, 
-                recipientNumber, amount, startTime, period);
+                recipientNumber, amount, startTime, daysPeriod);
             client.Close();
             return task.Result;
         }

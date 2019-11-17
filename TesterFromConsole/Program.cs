@@ -22,22 +22,8 @@ namespace TesterFromConsole
                 admin.AddAccount(client, new Account("12345677", "2222", AccountType.CreditAccount))
             );
 
-
-            //Client cl = admin.GetClient(1429, "-1");
-
             Console.WriteLine(
                 admin.AddAccount(client, new Account("12345678", "2228", AccountType.BonusAccount))
-            );
-
-            ATMClient atm = new ATMClient();
-
-            Account ac = atm.LoginAccount("12345677", "2222");
-
-            Console.WriteLine(
-                //atm.LimitExceedingProtection(ac, "2228", 500, "12345677")
-                //atm.WithdrawMoney(ac, "2228",1)
-                atm.AddTransaction(ac, "2222", "12345678", 200, DateTime.Now)
-            //atm.WithdrawMoney(ac, "2222", 100)
             );
 
             Console.Read();

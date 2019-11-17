@@ -12,7 +12,7 @@ namespace KMA.MOOP.ATM.DBModels
         private Guid _recipientAccountGuid;
         private uint _amount;
         private DateTime _transactionTime;
-        private DateTime? _period;
+        private double? _daysDaysPeriod;
 
         [Key, Column("Id")]
         public Guid Guid
@@ -45,21 +45,21 @@ namespace KMA.MOOP.ATM.DBModels
             set => _transactionTime = value;
         }
 
-        public DateTime? Period
+        public double? DaysPeriod
         {
-            get => _period;
-            set => _period = value;
+            get => _daysDaysPeriod;
+            set => _daysDaysPeriod = value;
         }
 
 
         public Transaction(Guid accountGuid, Guid recipientAccountGuid, uint amount,
-            DateTime startTime, DateTime? period) : this()
+            DateTime startTime, double? daysPeriod) : this()
         {
             _accountGuid = accountGuid;
             _recipientAccountGuid = recipientAccountGuid;
             _amount = amount;
             _transactionTime = startTime;
-            _period = period;
+            _daysDaysPeriod = daysPeriod;
         }
 
         private Transaction()

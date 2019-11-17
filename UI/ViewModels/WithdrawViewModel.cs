@@ -17,11 +17,10 @@ namespace KMA.MOOP.ATM.UI.ViewModels
             get => _withdrawSum;
             set
             {
-                    _withdrawSum = value;
-                    if (_withdrawSum.StartsWith("0"))
-                        _withdrawSum = _withdrawSum.Substring(1);
-                    OnPropertyChanged();
-
+                _withdrawSum = value;
+                if (_withdrawSum.StartsWith("0"))
+                    _withdrawSum = _withdrawSum.Substring(1);
+                OnPropertyChanged();
             }
         }
 
@@ -89,7 +88,7 @@ namespace KMA.MOOP.ATM.UI.ViewModels
 
         private void AddDigit(string digit)
         {
-            WithdrawSum = WithdrawSum + digit;
+            WithdrawSum += digit;
         }
 
     }
