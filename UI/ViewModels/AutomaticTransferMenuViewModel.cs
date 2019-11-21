@@ -237,7 +237,10 @@ namespace KMA.MOOP.ATM.UI.ViewModels
 
         public override void Button24Implementation(object obj)
         {
-            _numTextBox = 0;
+            Freq0 = false;
+            Freq1 = false;
+            Freq2 = false;
+            Freq3 = true;
         }
 
         public override void Button11Implementation(object obj)
@@ -249,10 +252,10 @@ namespace KMA.MOOP.ATM.UI.ViewModels
         {
             _numTextBox = 1;
         }
+
         public override void Button13Implementation(object obj)
         {
             _numTextBox = 2;
         }
-
     }
 }

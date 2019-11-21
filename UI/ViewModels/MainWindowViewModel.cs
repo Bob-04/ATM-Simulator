@@ -118,6 +118,11 @@ namespace KMA.MOOP.ATM.UI.ViewModels
             StationManager.CurrentViewModel.Button13Implementation(obj);
         }
 
+        public override void Button14Implementation(object obj)
+        {
+            StationManager.CurrentViewModel.Button14Implementation(obj);
+        }
+
         public override void Button21Implementation(object obj)
         {
             StationManager.CurrentViewModel.Button21Implementation(obj);
@@ -131,6 +136,11 @@ namespace KMA.MOOP.ATM.UI.ViewModels
         public override void Button23Implementation(object obj)
         {
             StationManager.CurrentViewModel.Button23Implementation(obj);
+        }
+
+        public override void Button24Implementation(object obj)
+        {
+            StationManager.CurrentViewModel.Button24Implementation(obj);
         }
     }
 }
