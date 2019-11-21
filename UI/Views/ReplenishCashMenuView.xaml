@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="Replenish money" FontSize="20" Height="45" HorizontalAlignment="Center" Margin="0,40,0,0"/>
         <Label Grid.Row="1" Content="Enter sum of money you want to replenish:" Height="35" Width="380" FontSize="18" Margin="0,30,0,0" />
-        <TextBox Grid.Row="2" Name="NumberTextBox" Width="100" FontSize="26" Height="50" Text="{Binding ReplenishSum, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" PreviewTextInput="NumberValidationTextBox" Margin="0,0,0,0"/>
+        <TextBox Grid.Row="2" Name="NumberTextBox" Width="100" IsEnabled="False" FontSize="26" Height="50" Text="{Binding ReplenishSum, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" PreviewTextInput="NumberValidationTextBox" Margin="0,0,0,0"/>
         <!--        <Button Grid.Row="3" Width="120" Height="50" FontSize="20" Content="Withdraw" Command="{Binding WithdrawCommand}" Margin="250,0,0,0" />
         <Button Grid.Row="3" Width="120" Height="50" FontSize="20" Content="Cancel" Command="{Binding CancelCommand}" Margin="0,0,250,0" /> -->
 

@@ -22,8 +22,8 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="Limit exceeding protection service" FontSize="20" Height="45" HorizontalAlignment="Center"  Margin="0,0,0,0" Width="320"/>
         <Label Grid.Row="2" Content="Enter protecting account &#10;              number:" FontSize="12" Width="150" Margin="0,0,220,0"/>
-        <TextBox Grid.Row="2" x:Name="mask" FontSize="16" Height="25" Width="150" Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" MaxLength="16" PreviewTextInput="NumberValidationTextBox" Margin="100,0,0,0" />
+        <TextBox Grid.Row="2" x:Name="mask" FontSize="16" IsEnabled="False" Height="25" Width="150" Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" MaxLength="16" PreviewTextInput="NumberValidationTextBox" Margin="100,0,0,0" />
         <Label Grid.Row="3" Content="Enter minimum balance that triggers service:" Height="40" Width="325" FontSize="16" Margin="0,0,0,0" />
-        <TextBox Grid.Row="4" Name="NumberTextBox" Width="100" FontSize="20" Height="30" PreviewTextInput="NumberValidationTextBox" Text="{Binding MinBalance, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="0,0,0,0"/>
+        <TextBox Grid.Row="4" Name="NumberTextBox" Width="100" IsEnabled="False" FontSize="20" Height="30" PreviewTextInput="NumberValidationTextBox" Text="{Binding MinBalance, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="0,0,0,0"/>
     </Grid>
 </UserControl>

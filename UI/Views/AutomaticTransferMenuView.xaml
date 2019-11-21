@@ -18,22 +18,26 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Automatic money transfer service" FontSize="20" Height="45" HorizontalAlignment="Center" Margin="0,0,0,0" Width="310"/>
-        <Label Grid.Row="1" Content="Enter receiver's card number:" FontSize="12" Margin="0,0,210,0" Height="30" Width="160"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="Automatic money transfer service" FontSize="18" Height="45" HorizontalAlignment="Center" Margin="0,0,0,0" Width="280"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="Enter receiver's card number:" FontSize="12" Margin="0,0,100,0" Height="30" Width="165"/>
+        <Label Grid.Row="1" Grid.Column="1" Content="Frequency:" HorizontalAlignment="Center" FontSize="16" Margin="0,0,0,0" Height="30" Width="85"/>
         <!--<xctk:MaskedTextBox x:Name="mask" FontSize="20" Mask="0000 0000 0000 0000"  ValueDataType="{x:Type s:UInt64}" Text="____ ____ ____ ____"  Margin="397,96,248,325.6" />-->
-        <TextBox Grid.Row="1" x:Name="mask" FontSize="16" Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" MaxLength="16" PreviewTextInput="NumberValidationTextBox" Height="25" Width="200" Margin="170,0,0,0" />
-        <Label Grid.Row="2" Content="Choose frequency:" FontSize="16" Height="40" Width="140" Margin="0,0,220,0"/>
-        <RadioButton Grid.Row="3" HorizontalAlignment="Left" IsChecked="{Binding Freq0}" FontSize="14" Height="40"  Content="One Time&#10;Transfer" Command="{Binding FrequencyCommand}" CommandParameter="One Time" Margin="0,0,0,0" />
-        <RadioButton Grid.Row="3" HorizontalAlignment="Center" IsChecked="{Binding Freq1}" FontSize="16" Height="40" Content="Weekly" Command="{Binding FrequencyCommand}" CommandParameter="Weekly" Margin="0,0,130,0" />
-         <RadioButton Grid.Row="3" HorizontalAlignment="Right"  IsChecked="{Binding Freq3}" FontSize="16" Height="40" Content="Every Year" Command="{Binding FrequencyCommand}" CommandParameter="Every Year" Margin="0,0,110,0" />
-        <RadioButton Grid.Row="3" HorizontalAlignment="Center" IsChecked="{Binding Freq2}" FontSize="16" Height="40" Content="Monthly" Command="{Binding FrequencyCommand}" CommandParameter="Monthly" Margin="270,0,0,0" />
-       
-        <Label Grid.Row="4" Content="Chose start date:" FontSize="16" Height="40" Width="130" Margin="0,0,200,0"/>
-        <TextBox Grid.Row="4"  Width="150" FontSize="16" Text="{Binding SelectedDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" PreviewTextInput="NumberValidationTextBox" Height="25" Margin="100,0,0,0"/>
+        <TextBox Grid.Row="2" Grid.Column="0" x:Name="mask" FontSize="16" IsEnabled="False" Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" MaxLength="16" PreviewTextInput="NumberValidationTextBox" Height="25" Width="200" Margin="0,0,0,0" />
+        <!--        <Label Grid.Row="2" Content="Choose frequency:" FontSize="16" Height="40" Width="140" Margin="0,0,145,0"/> -->
+        <RadioButton Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding Freq0}" FontSize="14" Height="40"  Content="One Time&#10;Transfer" Command="{Binding FrequencyCommand}" CommandParameter="One Time" Margin="2,0,0,0" />
+        <RadioButton Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" IsChecked="{Binding Freq1}" FontSize="16" Height="40" Content="Weekly" Command="{Binding FrequencyCommand}" CommandParameter="Weekly" Margin="0,0,25,0" />
+        <RadioButton Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" IsChecked="{Binding Freq2}" FontSize="16" Height="40" Content="Monthly" Command="{Binding FrequencyCommand}" CommandParameter="Monthly" Margin="0,0,14,0" />
+        <RadioButton Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right"  IsChecked="{Binding Freq3}" FontSize="16" Height="40" Content="Every Year" Command="{Binding FrequencyCommand}" CommandParameter="Every Year" Margin="0,0,2,0" />
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Chose start date:" FontSize="16" Height="40" Width="130" Margin="0,0,150,0"/>
+        <TextBox Grid.Row="3" Grid.Column="0" Width="100" FontSize="16" IsEnabled="False" Text="{Binding SelectedDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" PreviewTextInput="NumberValidationTextBox" Height="25" Margin="100,0,0,0"/>
         <!--<DatePicker Grid.Row="4" Margin="100,0,0,0" Height="25" Width="139"/>-->
-        <Label Grid.Row="5" Content="Enter sum of money you want to transfer:" FontSize="16" Height="40" Width="305" Margin="0,0,40,0"/>
-        <TextBox Grid.Row="6" Name="NumberTextBox" Width="80" FontSize="16" Text="{Binding TransferSum, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" PreviewTextInput="NumberValidationTextBox" Height="30" Margin="0,0,0,0"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="Enter sum of money you want to transfer:" FontSize="14" Height="40" Width="265" Margin="0,0,0,0"/>
+        <TextBox Grid.Row="5" Grid.Column="0" Name="NumberTextBox" Width="80" FontSize="16" IsEnabled="False" Text="{Binding TransferSum, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" PreviewTextInput="NumberValidationTextBox" Height="30" Margin="0,0,0,0"/>
     </Grid>
 </UserControl>

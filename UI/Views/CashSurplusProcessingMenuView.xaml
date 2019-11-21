@@ -23,8 +23,8 @@
         <Label Grid.Row="0" Content="Cash surplus processing service" FontSize="20" Height="45" HorizontalAlignment="Center"   Margin="0,0,0,0" Width="290"/>
         <Label  Grid.Row="1"  Content="Enter account number that cash surplus will be transfered to:" FontSize="13.5"  Margin="0,0,0,0" Height="40" Width="380"/>
         <!--<xctk:MaskedTextBox x:Name="mask" FontSize="20" Mask="0000 0000 0000 0000"  ValueDataType="{x:Type s:UInt64}" Text="____ ____ ____ ____" Margin="320,129,320,292.6" />-->
-        <TextBox Grid.Row="2"  x:Name="mask" FontSize="16" Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" MaxLength="16" PreviewTextInput="NumberValidationTextBox" Height="25" Width="200" Margin="0,0,0,0" />
+        <TextBox Grid.Row="2"  x:Name="mask" FontSize="16" IsEnabled="False" Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" MaxLength="16" PreviewTextInput="NumberValidationTextBox" Height="25" Width="200" Margin="0,0,0,0" />
         <Label Grid.Row="3"  Content="Enter minimum balance that triggers service:" FontSize="16" Height="40" Width="330" Margin="0,0,0,0" />
-        <TextBox Grid.Row="4"  Name="NumberTextBox" Width="100" FontSize="16" Height="25" PreviewTextInput="NumberValidationTextBox" Text="{Binding MaxBalance, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="0,0,0,0"/>
+        <TextBox Grid.Row="4"  Name="NumberTextBox" Width="100" IsEnabled="False" FontSize="16" Height="25" PreviewTextInput="NumberValidationTextBox" Text="{Binding MaxBalance, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="0,0,0,0"/>
     </Grid>
 </UserControl>
