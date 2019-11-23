@@ -28,19 +28,11 @@ namespace KMA.MOOP.ATM.UI
             NavigationManager.Instance.Initialize(new InitializationNavigationModel(this));
             StationManager.InitializeATMClient(new ATMClient());
             LoginClient();
-
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            
         }
 
         private void LoginClient()
         {
             NavigationManager.Instance.Navigate(ViewType.SignIn);
-            //NavigationManager.Instance.Navigate(ViewType.Replenish);
         }
     }
 }
