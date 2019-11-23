@@ -10,16 +10,17 @@ namespace KMA.MOOP.ATM.AdministratorUI.ViewModels
 {
     internal class RegisterClientViewModel:BaseViewModel
     {
-        private long _identificationCode;
+        private string _identificationCode;
         private string _password;
+        private string _repeatPassword;
         private string _phone;
         private string _firstName;
         private string _lastName;
 
-        private ICommand _acceptCommand;
-        private ICommand _cancelCommand;
+        private ICommand _registerCommand;
+        private ICommand _backCommand;
 
-        public long IdentificationCode
+        public string IdentificationCode
         {
             get => _identificationCode;
             set
@@ -35,6 +36,16 @@ namespace KMA.MOOP.ATM.AdministratorUI.ViewModels
             set
             {
                 _password = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string RepeatPassword
+        {
+            get => _repeatPassword;
+            set
+            {
+                _repeatPassword = value;
                 OnPropertyChanged();
             }
         }
@@ -69,28 +80,33 @@ namespace KMA.MOOP.ATM.AdministratorUI.ViewModels
             }
         }
 
-        public ICommand AcceptCommand => _acceptCommand ??
-                                         (_acceptCommand =
-                                             new RelayCommand<object>(AcceptImplementation, CanSignInExecute));
+        public ICommand RegisterCommand => _registerCommand ??
+                                         (_registerCommand =
+                                             new RelayCommand<object>(RegisterImplementation, CanSignInExecute));
 
         private bool CanSignInExecute(object obj)
         {
             return !string.IsNullOrWhiteSpace(FirstName) && !string.IsNullOrWhiteSpace(LastName)
-                    && !string.IsNullOrWhiteSpace(Password) && !string.IsNullOrWhiteSpace(Phone);
+                    && !string.IsNullOrWhiteSpace(Password) && !string.IsNullOrWhiteSpace(Phone) && !string.IsNullOrWhiteSpace(RepeatPassword);
         }
 
         private void Clear()
         {
-            IdentificationCode = 0;
+            IdentificationCode = "";
             Password = "";
+            RepeatPassword = "";
             Phone = "+";
             FirstName = "";
             LastName = "";
         }
 
-        private async void AcceptImplementation(object obj)
+        private async void RegisterImplementation(object obj)
         {
-
+            if (Password != RepeatPassword)
+            {
+                MessageBox.Show("Password not the same");
+                return;
+            }
             LoaderManager.Instance.ShowLoader();
             string res = "";
             var result = await Task.Run(() =>
@@ -98,9 +114,9 @@ namespace KMA.MOOP.ATM.AdministratorUI.ViewModels
                 try
                 {
                     
-                    res = StationManager.AdminClient.RegisterClient(new DBModels.Client(_identificationCode,_firstName,_lastName, _phone, _password));
+                    res = StationManager.AdminClient.RegisterClient(new DBModels.Client(Convert.ToInt64(_identificationCode),_firstName,_lastName, _phone, _password));
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Wrong");
                     return false;
@@ -118,9 +134,10 @@ namespace KMA.MOOP.ATM.AdministratorUI.ViewModels
             }
         }
 
-        public ICommand CancelCommand => _cancelCommand ?? (_cancelCommand = new RelayCommand<object>(CancelExecute));
-        private void CancelExecute(object obj)
+        public ICommand BackCommand => _backCommand ?? (_backCommand = new RelayCommand<object>(BackExecute));
+        private void BackExecute(object obj)
         {
+            Clear();
             NavigationManager.Instance.Navigate(ViewType.Main);
         }
     }

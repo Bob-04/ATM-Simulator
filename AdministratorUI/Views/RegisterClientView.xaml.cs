@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using System.Windows.Controls;
 using System.Windows.Input;
+using KMA.MOOP.ATM.AdministratorUI.Tools.Navigation;
 using KMA.MOOP.ATM.AdministratorUI.ViewModels;
 
 namespace KMA.MOOP.ATM.AdministratorUI.Views
@@ -8,7 +9,7 @@ namespace KMA.MOOP.ATM.AdministratorUI.Views
     /// <summary>
     /// Interaction logic for AdminView.xaml
     /// </summary>
-    public partial class RegisterClientView : UserControl
+    public partial class RegisterClientView : UserControl, INavigatable
     {
         public RegisterClientView()
         {

@@ -29,9 +29,9 @@
             <Run Text="{Binding MyModel.LastName ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </TextBlock>
 
-        <Button Grid.Row="2" Grid.Column="1" FontSize="25" Content="Add account" Command="{Binding RegisterClientCommand}"/>
-        <Button Grid.Row="2" Grid.Column="3" FontSize="25" Content="Unblock card" Command="{Binding SignInClientCommand}"/>
+        <Button Grid.Row="2" Grid.Column="1" FontSize="25" Content="Add account" Command="{Binding AddAccountCommand}"/>
+        <Button Grid.Row="2" Grid.Column="3" FontSize="25" Content="Unblock card" Command="{Binding UnblockCardCommand}"/>
 
-        <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" FontSize="25" Content="Back" Command="{Binding SignInClientCommand}"/>
+        <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" FontSize="25" Content="Back" Command="{Binding BackCommand}"/>
     </Grid>
 </UserControl>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using KMA.MOOP.ATM.AdministratorUI.Tools;
 using KMA.MOOP.ATM.AdministratorUI.Tools.Managers;
@@ -11,31 +12,19 @@ namespace KMA.MOOP.ATM.AdministratorUI.ViewModels
 {
     internal class AddAccountViewModel:BaseViewModel
     {
-        private string _number;
-        private string _pin;
-        private AccountType _type;
+        private string _cardNumber;
+        private AccountType _type = AccountType.CalculatedAccount;
         private long _identificationCode;
-        private string _password;
 
-        private ICommand _acceptCommand;
-        private ICommand _cancelCommand;
+        private ICommand _addAccountCommand;
+        private ICommand _backCommand;
 
-        public string Number
+        public string CardNumber
         {
-            get => _number;
+            get => _cardNumber;
             set
             {
-                _number = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string Pin
-        {
-            get => _pin;
-            set
-            {
-                _pin = value;
+                _cardNumber = value;
                 OnPropertyChanged();
             }
         }
@@ -61,34 +50,22 @@ namespace KMA.MOOP.ATM.AdministratorUI.ViewModels
             }
         }
 
-        public string Password
-        {
-            get => _password;
-            set
-            {
-                _password = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public ICommand AcceptCommand => _acceptCommand ??
-                                         (_acceptCommand =
-                                             new RelayCommand<object>(AcceptImplementation, CanSignInExecute));
+        public ICommand AddAccountCommand => _addAccountCommand ??
+                                         (_addAccountCommand =
+                                             new RelayCommand<object>(AddAccountImplementation, CanSignInExecute));
 
         private bool CanSignInExecute(object obj)
         {
-            return !string.IsNullOrWhiteSpace(Number) && !string.IsNullOrWhiteSpace(Pin);
+            return !string.IsNullOrWhiteSpace(CardNumber) && !string.IsNullOrWhiteSpace(((PasswordBox)obj).Password);
         }
 
         private void Clear()
         {
-            Number = "";
-            Pin = "";
+            CardNumber = "";
             IdentificationCode = 0;
-            Password = "";
         }
 
-        private async void AcceptImplementation(object obj)
+        private async void AddAccountImplementation(object obj)
         {
 
             LoaderManager.Instance.ShowLoader();
@@ -98,9 +75,9 @@ namespace KMA.MOOP.ATM.AdministratorUI.ViewModels
                 try
                 {
 
-                    res = StationManager.AdminClient.AddAccount(StationManager.AdminClient.GetClient(_identificationCode,_password),new Account(_number,_pin,_type));
+                    res = StationManager.AdminClient.AddAccount(StationManager.CurrentClient,new Account(_cardNumber, ((PasswordBox)obj).Password,_type));
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Wrong");
                     return false;
@@ -113,15 +90,18 @@ namespace KMA.MOOP.ATM.AdministratorUI.ViewModels
             {
                 MessageBox.Show(res);
                 Clear();
-                NavigationManager.Instance.Navigate(ViewType.Main);
+                ((PasswordBox)obj).Password = "";
+                NavigationManager.Instance.Navigate(ViewType.Client);
                 ;
             }
         }
 
-        public ICommand CancelCommand => _cancelCommand ?? (_cancelCommand = new RelayCommand<object>(CancelExecute));
-        private void CancelExecute(object obj)
+        public ICommand BackCommand => _backCommand ?? (_backCommand = new RelayCommand<object>(BackImplementation));
+        private void BackImplementation(object obj)
         {
-            NavigationManager.Instance.Navigate(ViewType.Main);
+            Clear();
+            ((PasswordBox)obj).Password = "";
+            NavigationManager.Instance.Navigate(ViewType.Client);
         }
 
     }

@@ -6,13 +6,18 @@ namespace KMA.MOOP.ATM.AdministratorUI.Tools.Managers
 {
     internal static class StationManager
     {
-        //internal static Account CurrentAccount { get; set; }
+        internal static DBModels.Client CurrentClient { get; set; }
 
         internal static AdminClient AdminClient { get; private set; }
 
-        internal static void InitializeAdminClient(AdminClient client)
+        internal static void InitializeAdminClient(AdminClient admin)
         {
-            AdminClient = client;
+            AdminClient = admin;
+        }
+
+        internal static void InitializeCurrentClient(DBModels.Client client)
+        {
+            CurrentClient = client;
         }
 
         internal static void CloseApp()

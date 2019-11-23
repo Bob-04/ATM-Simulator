@@ -23,7 +23,7 @@
         <Label Grid.Row="2" Grid.Column="0" Content="PIN:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="26"/>
         <PasswordBox Grid.Row="2" Grid.Column="1" Name="PassBox" FontSize="26" MaxLength="4" VerticalAlignment="Center" PreviewTextInput="NumberValidationTextBox" Margin="30 20"/>
 
-        <Button Grid.Row="3" Grid.Column="1" Height="40" Width="200" Content="Create user" Command="{Binding RegisterCommand}" FontSize="20"/>
-        <Button Grid.Row="3" Grid.Column="0" Height="40" Width="200" Content="Cancel" FontSize="20" Command="{Binding CancelCommand}"/>
+        <Button Grid.Row="3" Grid.Column="1" Height="40" Width="200" Content="Create user" Command="{Binding AddAccountCommand}" CommandParameter="{Binding ElementName=PassBox}" FontSize="20"/>
+        <Button Grid.Row="3" Grid.Column="0" Height="40" Width="200" Content="Back" FontSize="20" Command="{Binding BackCommand}" CommandParameter="{Binding ElementName=PassBox}"/>
     </Grid>
 </UserControl>

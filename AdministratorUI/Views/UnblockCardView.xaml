@@ -20,7 +20,7 @@
         <Label Grid.Row="1"  Content="Card Number:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="26" Margin="50,0,0,0" />
         <TextBox Grid.Row="1" Grid.Column="1" x:Name="Card" FontSize="20" Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" MaxLength="13" Margin="30 20" />
 
-        <Button Grid.Row="2" Grid.Column="1" Height="40" Width="200" Content="Unblock" Command="{Binding RegisterCommand}" FontSize="20"/>
-        <Button Grid.Row="2" Grid.Column="0" Height="40" Width="200" Content="Cancel" FontSize="20" Command="{Binding CancelCommand}"/>
+        <Button Grid.Row="2" Grid.Column="1" Height="40" Width="200" Content="Unblock" Command="{Binding UnblockCommand}" FontSize="20"/>
+        <Button Grid.Row="2" Grid.Column="0" Height="40" Width="200" Content="Cancel" FontSize="20" Command="{Binding BackCommand}"/>
     </Grid>
 </UserControl>
