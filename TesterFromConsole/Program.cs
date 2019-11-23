@@ -26,6 +26,10 @@ namespace TesterFromConsole
                 admin.AddAccount(client, new Account("12345678", "2228", AccountType.BonusAccount))
             );
 
+            ATMClient atmClient = new ATMClient();
+            Account ac = atmClient.LoginAccount("12345678", "2228");
+            atmClient.BlockAccount(ac);
+
             Console.Read();
         }
     }

@@ -50,6 +50,12 @@ namespace KMA.MOOP.ATM.Client.ATMClient.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/AddTransaction", ReplyAction="http://tempuri.org/IATMSimulator/AddTransactionResponse")]
         System.Threading.Tasks.Task<string> AddTransactionAsync(KMA.MOOP.ATM.DBModels.Account acc, string pin, string recipientNumber, uint amount, System.DateTime startTime, System.Nullable<double> daysPeriod);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/BlockAccount", ReplyAction="http://tempuri.org/IATMSimulator/BlockAccountResponse")]
+        string BlockAccount(KMA.MOOP.ATM.DBModels.Account acc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IATMSimulator/BlockAccount", ReplyAction="http://tempuri.org/IATMSimulator/BlockAccountResponse")]
+        System.Threading.Tasks.Task<string> BlockAccountAsync(KMA.MOOP.ATM.DBModels.Account acc);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -126,6 +132,14 @@ namespace KMA.MOOP.ATM.Client.ATMClient.ServiceReference1 {
         public System.Threading.Tasks.Task<string> AddTransactionAsync(KMA.MOOP.ATM.DBModels.Account acc, string pin, string recipientNumber, uint amount, System.DateTime startTime, System.Nullable<double> daysPeriod) {
             return base.Channel.AddTransactionAsync(acc, pin, recipientNumber, amount, startTime, daysPeriod);
         }
+        
+        public string BlockAccount(KMA.MOOP.ATM.DBModels.Account acc) {
+            return base.Channel.BlockAccount(acc);
+        }
+        
+        public System.Threading.Tasks.Task<string> BlockAccountAsync(KMA.MOOP.ATM.DBModels.Account acc) {
+            return base.Channel.BlockAccountAsync(acc);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -149,6 +163,12 @@ namespace KMA.MOOP.ATM.Client.ATMClient.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAdministratorSimulator/AddAccount", ReplyAction="http://tempuri.org/IBankAdministratorSimulator/AddAccountResponse")]
         System.Threading.Tasks.Task<string> AddAccountAsync(KMA.MOOP.ATM.DBModels.Client cl, KMA.MOOP.ATM.DBModels.Account acc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAdministratorSimulator/UnblockAccount", ReplyAction="http://tempuri.org/IBankAdministratorSimulator/UnblockAccountResponse")]
+        string UnblockAccount(KMA.MOOP.ATM.DBModels.Client cl, string accNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAdministratorSimulator/UnblockAccount", ReplyAction="http://tempuri.org/IBankAdministratorSimulator/UnblockAccountResponse")]
+        System.Threading.Tasks.Task<string> UnblockAccountAsync(KMA.MOOP.ATM.DBModels.Client cl, string accNumber);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -200,6 +220,14 @@ namespace KMA.MOOP.ATM.Client.ATMClient.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> AddAccountAsync(KMA.MOOP.ATM.DBModels.Client cl, KMA.MOOP.ATM.DBModels.Account acc) {
             return base.Channel.AddAccountAsync(cl, acc);
+        }
+        
+        public string UnblockAccount(KMA.MOOP.ATM.DBModels.Client cl, string accNumber) {
+            return base.Channel.UnblockAccount(cl, accNumber);
+        }
+        
+        public System.Threading.Tasks.Task<string> UnblockAccountAsync(KMA.MOOP.ATM.DBModels.Client cl, string accNumber) {
+            return base.Channel.UnblockAccountAsync(cl, accNumber);
         }
     }
 }

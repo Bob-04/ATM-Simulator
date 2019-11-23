@@ -20,6 +20,8 @@ namespace KMA.MOOP.ATM.DBModels
         private string _pin;
         private uint _balance;
         private AccountType _accountType;
+        private bool _active;
+
         // Cash Surplus Processing
         private uint _maxBalance;
         private Guid _surplusesAccountGuid;
@@ -54,6 +56,12 @@ namespace KMA.MOOP.ATM.DBModels
         {
             get => _balance;
             set => _balance = value;
+        }
+
+        public bool Active
+        {
+            get => _active;
+            set => _active = value;
         }
 
         public AccountType AccountType
@@ -105,6 +113,7 @@ namespace KMA.MOOP.ATM.DBModels
         {
             _guid = Guid.NewGuid();
             _balance = 0;
+            _active = true;
 
             _maxBalance = 0;
             _surplusesAccountGuid = Guid.Empty;

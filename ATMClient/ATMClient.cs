@@ -57,5 +57,13 @@ namespace KMA.MOOP.ATM.Client.ATMClient
             client.Close();
             return task.Result;
         }
+
+        public string BlockAccount(Account acc)
+        {
+            ATMSimulatorClient client = new ATMSimulatorClient();
+            Task<string> task = client.BlockAccountAsync(acc);
+            client.Close();
+            return task.Result;
+        }
     }
 }

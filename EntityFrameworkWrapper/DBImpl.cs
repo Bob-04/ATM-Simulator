@@ -11,8 +11,12 @@ namespace KMA.MOOP.ATM.EntityFrameworkWrapper
         {
             using (DatabaseContext db = new DatabaseContext())
             {
-                return db.Account.FirstOrDefault(
+                Account dbAccount = db.Account.FirstOrDefault(
                     ac => ac.Number == num && ac.Pin == pin);
+                if (dbAccount != null && !dbAccount.Active)
+                    return new Account("", "", AccountType.BonusAccount);
+
+                return dbAccount;
             }
         }
 
@@ -24,6 +28,9 @@ namespace KMA.MOOP.ATM.EntityFrameworkWrapper
                 if (acc == null || (dbAccount = db.Account.FirstOrDefault(
                        ac => ac.Number == acc.Number)) == null)
                     return "Failed to login account";
+
+                if (!dbAccount.Active)
+                    return "Account is blocked, please contact administrator";
 
                 dbAccount.Balance += amount;
 
@@ -56,6 +63,9 @@ namespace KMA.MOOP.ATM.EntityFrameworkWrapper
                 if (acc == null || (dbAccount = db.Account.FirstOrDefault(
                         ac => ac.Number == acc.Number && ac.Pin == pin)) == null)
                     return "Failed to login account";
+
+                if (!dbAccount.Active)
+                    return "Account is blocked, please contact administrator";
 
                 if (dbAccount.Balance < amount)
                 {
@@ -112,6 +122,9 @@ namespace KMA.MOOP.ATM.EntityFrameworkWrapper
                         ac => ac.Number == acc.Number && ac.Pin == pin)) == null)
                     return "Failed to login account";
 
+                if (!dbAccount.Active)
+                    return "Account is blocked, please contact administrator";
+
                 if (dbAccount.MinBalance > maxBalance)
                     return $"Failed! Your min balance more then {maxBalance}";
 
@@ -139,6 +152,9 @@ namespace KMA.MOOP.ATM.EntityFrameworkWrapper
                 if (acc == null || (dbAccount = db.Account.FirstOrDefault(
                         ac => ac.Number == acc.Number && ac.Pin == pin)) == null)
                     return "Failed to login account";
+
+                if (!dbAccount.Active)
+                    return "Account is blocked, please contact administrator";
 
                 if (dbAccount.MaxBalance != 0 && dbAccount.MaxBalance < minBalance)
                     return $"Failed! Your max balance less then {minBalance}";
@@ -169,6 +185,9 @@ namespace KMA.MOOP.ATM.EntityFrameworkWrapper
                         ac => ac.Number == acc.Number && ac.Pin == pin)) == null)
                     return "Failed to login account";
 
+                if (!dbAccount.Active)
+                    return "Account is blocked, please contact administrator";
+
                 if (dbAccount.Number == recipientNumber)
                     return "Failed! Entered your account number as recipient";
 
@@ -182,6 +201,22 @@ namespace KMA.MOOP.ATM.EntityFrameworkWrapper
 
                 db.SaveChanges();
                 return "Operation completed successfully!";
+            }
+        }
+
+        public string BlockAccount(Account acc)
+        {
+            using (DatabaseContext db = new DatabaseContext())
+            {
+                Account dbAccount;
+                if (acc == null || (dbAccount = db.Account.FirstOrDefault(
+                        ac => ac.Number == acc.Number)) == null)
+                    return "Failed to login account";
+
+                dbAccount.Active = false;
+
+                db.SaveChanges();
+                return "Account is blocked!";
             }
         }
 
@@ -235,6 +270,22 @@ namespace KMA.MOOP.ATM.EntityFrameworkWrapper
                 }
             }
             return $"Account successfully added to client {cl}";
+        }
+
+        public string UnblockAccount(Client cl, string accNumber)
+        {
+            using (DatabaseContext db = new DatabaseContext())
+            {
+                Account dbAccount;
+                if ((dbAccount = db.Account.FirstOrDefault(
+                        ac => ac.Number == accNumber)) == null)
+                    return "Failed to login account";
+
+                dbAccount.Active = true;
+
+                db.SaveChanges();
+                return "Account is unblocked!";
+            }
         }
 
         public void ExecuteTransactions()

@@ -14,5 +14,8 @@ namespace KMA.MOOP.ATM.Server.Interface
 
         [OperationContract]
         string AddAccount(Client cl, Account acc);
+
+        [OperationContract]
+        string UnblockAccount(Client cl, string accNumber);
     }
 }

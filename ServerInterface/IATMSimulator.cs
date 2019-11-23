@@ -25,5 +25,8 @@ namespace KMA.MOOP.ATM.Server.Interface
         [OperationContract]
         string AddTransaction(Account acc, string pin,
             string recipientNumber, uint amount, DateTime startTime, double? daysPeriod = null);
+
+        [OperationContract]
+        string BlockAccount(Account acc);
     }
 }

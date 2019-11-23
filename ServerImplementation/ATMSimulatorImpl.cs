@@ -45,5 +45,10 @@ namespace KMA.MOOP.ATM.Server.Implementation
         {
             return _db.AddTransaction(acc, pin, recipientNumber, amount, startTime, daysPeriod);
         }
+
+        public string BlockAccount(Account acc)
+        {
+            return _db.BlockAccount(acc);
+        }
     }
 }

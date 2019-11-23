@@ -44,23 +44,24 @@ namespace KMA.MOOP.ATM.UI.ViewModels
             LoaderManager.Instance.ShowLoader();
             await Task.Run(() =>
             {
-                try
-                {
-                    currentClient = StationManager.ATMClient.LoginAccount(_cardNumber, _view.PassBox.Password);
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Wrong card number or PIN");
-                    return false;
-                }
+                currentClient = StationManager.ATMClient.LoginAccount(_cardNumber, _view.PassBox.Password);
                 return true;
             });
             LoaderManager.Instance.HideLoader();
             if (currentClient != null)
             {
+                if (string.IsNullOrEmpty(currentClient.Number))
+                {
+                    MessageBox.Show("Account is blocked, please contact administrator");
+                    return;
+                }
                 StationManager.CurrentAccount = currentClient;
                 ClearImplementation(obj);
                 NavigationManager.Instance.Navigate(ViewType.Menu);
+            }
+            else
+            {
+                MessageBox.Show("Wrong card number or PIN");
             }
         }
         private bool CanSignInExecute(object obj)

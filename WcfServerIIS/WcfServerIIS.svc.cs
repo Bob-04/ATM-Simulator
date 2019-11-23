@@ -49,6 +49,11 @@ namespace KMA.MOOP.ATM.Server.WcfServerIIS
             return _atmService.AddTransaction(acc, pin, recipientNumber, amount, startTime, daysPeriod);
         }
 
+        public string BlockAccount(Account acc)
+        {
+            return _atmService.BlockAccount(acc);
+        }
+
         public string RegisterClient(Client cl)
         {
             return _administratorService.RegisterClient(cl);
@@ -62,6 +67,11 @@ namespace KMA.MOOP.ATM.Server.WcfServerIIS
         public string AddAccount(Client cl, Account acc)
         {
             return _administratorService.AddAccount(cl, acc);
+        }
+
+        public string UnblockAccount(Client cl, string accNumber)
+        {
+            return _administratorService.UnblockAccount(cl, accNumber);
         }
     }
 }

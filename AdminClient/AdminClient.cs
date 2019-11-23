@@ -30,5 +30,13 @@ namespace KMA.MOOP.ATM.Client.AdminClient
             client.Close();
             return task.Result;
         }
+
+        public string UnblockAccount(DBModels.Client cl, string accNumber)
+        {
+            BankAdministratorSimulatorClient client = new BankAdministratorSimulatorClient();
+            Task<string> task = client.UnblockAccountAsync(cl, accNumber);
+            client.Close();
+            return task.Result;
+        }
     }
 }

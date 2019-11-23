@@ -4,6 +4,7 @@
   <xs:complexType name="Account">
     <xs:sequence>
       <xs:element minOccurs="0" name="AccountType" type="tns:AccountType" />
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
       <xs:element minOccurs="0" name="Balance" type="xs:unsignedInt" />
       <xs:element minOccurs="0" name="MaxBalance" type="xs:unsignedInt" />
       <xs:element minOccurs="0" name="MinBalance" type="xs:unsignedInt" />

@@ -28,5 +28,10 @@ namespace KMA.MOOP.ATM.Server.Implementation
         {
             return _db.AddAccount(cl, acc);
         }
+
+        public string UnblockAccount(Client cl, string accNumber)
+        {
+            return _db.UnblockAccount(cl, accNumber);
+        }
     }
 }
