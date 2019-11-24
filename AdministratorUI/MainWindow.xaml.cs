@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using KMA.MOOP.ATM.AdministratorUI.Tools.Managers;
 using KMA.MOOP.ATM.AdministratorUI.Tools.Navigation;
 using KMA.MOOP.ATM.AdministratorUI.ViewModels;
+using KMA.MOOP.ATM.Client.AdminClient;
 
 namespace KMA.MOOP.ATM.AdministratorUI
 {
@@ -24,6 +25,7 @@ namespace KMA.MOOP.ATM.AdministratorUI
         {
             NavigationManager.Instance.Initialize(new InitializationNavigationModel(this));
             NavigationManager.Instance.Navigate(ViewType.Main);
+            StationManager.InitializeAdminClient(new AdminClient());
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using System.Windows.Controls;
 using System.Windows.Input;
 using KMA.MOOP.ATM.AdministratorUI.Tools.Navigation;

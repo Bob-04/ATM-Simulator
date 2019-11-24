@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using KMA.MOOP.ATM.Client.ATMClient;
 using KMA.MOOP.ATM.DBModels;
@@ -17,6 +18,9 @@ namespace KMA.MOOP.ATM.UI.Tools.Managers
         {
             ATMClient = client;
         }
+
+        internal static Dictionary<string, int> CardsAttempts =
+            new Dictionary<string, int>();
 
         internal static void CloseApp()
         {

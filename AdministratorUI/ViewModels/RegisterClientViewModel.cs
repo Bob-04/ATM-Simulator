@@ -111,16 +111,17 @@ namespace KMA.MOOP.ATM.AdministratorUI.ViewModels
             string res = "";
             var result = await Task.Run(() =>
             {
-                try
-                {
-                    
-                    res = StationManager.AdminClient.RegisterClient(new DBModels.Client(Convert.ToInt64(_identificationCode),_firstName,_lastName, _phone, _password));
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Wrong");
-                    return false;
-                }
+                //try
+                //{
+                    res = StationManager.AdminClient.RegisterClient(
+                        new DBModels.Client(Convert.ToInt64
+                            (_identificationCode),_firstName,_lastName, _phone, _password));
+                //}
+                //catch (Exception)
+                //{
+                //    MessageBox.Show("Wrong");
+                //    return false;
+                //}
 
                 return true;
             });

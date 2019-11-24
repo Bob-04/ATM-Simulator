@@ -55,12 +55,26 @@ namespace KMA.MOOP.ATM.UI.ViewModels
                     MessageBox.Show("Account is blocked, please contact administrator");
                     return;
                 }
+                if (StationManager.CardsAttempts.ContainsKey(_cardNumber))
+                    StationManager.CardsAttempts.Remove(_cardNumber);
+
                 StationManager.CurrentAccount = currentClient;
                 ClearImplementation(obj);
                 NavigationManager.Instance.Navigate(ViewType.Menu);
             }
             else
             {
+                if (StationManager.CardsAttempts.ContainsKey(_cardNumber))
+                {
+                    if (StationManager.CardsAttempts[_cardNumber] >= 2)
+                        StationManager.ATMClient.BlockAccount(
+                            new Account(_cardNumber, "", AccountType.BonusAccount));
+                    StationManager.CardsAttempts[_cardNumber]++;
+                }
+                else
+                {
+                    StationManager.CardsAttempts.Add(_cardNumber, 1);
+                }
                 MessageBox.Show("Wrong card number or PIN");
             }
         }
