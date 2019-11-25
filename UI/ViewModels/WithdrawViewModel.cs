@@ -26,7 +26,8 @@ namespace KMA.MOOP.ATM.UI.ViewModels
 
         private async void WithdrawImplementation(object obj)
         {
-
+            if (_withdrawSum.Equals("0"))
+                return;
             LoaderManager.Instance.ShowLoader();
             string res = "";
             var result = await Task.Run(() =>

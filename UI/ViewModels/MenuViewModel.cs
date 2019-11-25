@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading.Tasks;
+using System.Windows;
 using KMA.MOOP.ATM.UI.Tools;
 using KMA.MOOP.ATM.UI.Tools.Managers;
 using KMA.MOOP.ATM.UI.Tools.Navigation;
@@ -18,9 +20,22 @@ namespace KMA.MOOP.ATM.UI.ViewModels
             NavigationManager.Instance.Navigate(ViewType.LimitExceeding);
         }
 
-        public override void Button13Implementation(object obj)
+        public override async void Button13Implementation(object obj)
         {
-            throw new NotImplementedException();
+            LoaderManager.Instance.ShowLoader();
+            await Task.Run(() =>
+            {
+                try
+                {
+                    StationManager.CurrentAccount = StationManager.ATMClient.LoginAccount(StationManager.CurrentAccount.Number, StationManager.CurrentAccount.Pin);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Service is offline");
+                }
+            });
+            LoaderManager.Instance.HideLoader();
+            NavigationManager.Instance.Navigate(ViewType.AccountInfo);
         }
 
         public override void Button21Implementation(object obj)

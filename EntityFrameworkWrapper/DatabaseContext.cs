@@ -15,7 +15,7 @@ namespace KMA.MOOP.ATM.EntityFrameworkWrapper
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=127.0.0.1;UserId=root;Password=1234;database=bank_schema;");
+            optionsBuilder.UseMySql("server=127.0.0.1;UserId=root;Password=tksnfyfws];database=bank_schema;");
         }
 
         // To set indexes.

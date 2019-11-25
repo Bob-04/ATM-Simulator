@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using KMA.MOOP.ATM.UI.Tools.Navigation;
+﻿using KMA.MOOP.ATM.UI.Tools.Navigation;
 
 namespace KMA.MOOP.ATM.UI.Tools.Managers
 {

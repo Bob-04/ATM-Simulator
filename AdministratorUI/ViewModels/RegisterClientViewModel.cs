@@ -95,7 +95,7 @@ namespace KMA.MOOP.ATM.AdministratorUI.ViewModels
             IdentificationCode = "";
             Password = "";
             RepeatPassword = "";
-            Phone = "+";
+            Phone = "";
             FirstName = "";
             LastName = "";
         }
@@ -111,19 +111,19 @@ namespace KMA.MOOP.ATM.AdministratorUI.ViewModels
             string res = "";
             var result = await Task.Run(() =>
             {
-                //try
-                //{
+                try
+                {
                     res = StationManager.AdminClient.RegisterClient(
                         new DBModels.Client(Convert.ToInt64
                             (_identificationCode),_firstName,_lastName, _phone, _password));
-                //}
-                //catch (Exception)
-                //{
-                //    MessageBox.Show("Wrong");
-                //    return false;
-                //}
+            }
+                catch (Exception)
+            {
+                MessageBox.Show("Wrong");
+                return false;
+            }
 
-                return true;
+            return true;
             });
             LoaderManager.Instance.HideLoader();
             if (result)

@@ -26,7 +26,8 @@ namespace KMA.MOOP.ATM.UI.ViewModels
 
         private async void AcceptImplementation(object obj)
         {
-
+            if (_replenishSum.Equals("0"))
+                return;
             LoaderManager.Instance.ShowLoader();
             string res = "";
             var result = await Task.Run(() =>
@@ -47,6 +48,7 @@ namespace KMA.MOOP.ATM.UI.ViewModels
             if (result)
             {
                 ClearImplementation(obj);
+                StationManager.CurrentAccount.Balance += Convert.ToUInt32(_replenishSum);
                 MessageBox.Show(res);
             }
         }

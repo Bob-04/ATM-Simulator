@@ -93,12 +93,12 @@ namespace KMA.MOOP.ATM.UI.ViewModels
         public override void Press7Implementation(object obj) { AddDigit("7"); }
         public override void Press8Implementation(object obj) { AddDigit("8"); }
         public override void Press9Implementation(object obj) { AddDigit("9");}
-        public override void Button12Implementation(object obj)
+        public override void Button22Implementation(object obj)
         {
             _numTextBox = 0;
         }
 
-        public override void Button13Implementation(object obj)
+        public override void Button24Implementation(object obj)
         {
             _numTextBox = 1;
         }

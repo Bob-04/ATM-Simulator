@@ -11,7 +11,8 @@ namespace KMA.MOOP.ATM.UI.Tools.Navigation
         Menu,
         SignIn,
         Withdraw,
-        Replenish
+        Replenish,
+        AccountInfo
     }
     interface INavigationModel
     {

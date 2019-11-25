@@ -80,7 +80,7 @@ namespace KMA.MOOP.ATM.UI.ViewModels
         }
         private bool CanSignInExecute(object obj)
         {
-            return !string.IsNullOrWhiteSpace(CardNumber);// && !string.IsNullOrWhiteSpace(_password);
+            return !string.IsNullOrWhiteSpace(CardNumber) && !string.IsNullOrWhiteSpace(_view.PassBox.Password);
         }
 
         public override void ClearImplementation(object obj)
@@ -99,7 +99,8 @@ namespace KMA.MOOP.ATM.UI.ViewModels
 
         public override void EnterImplementation(object obj)
         {
-            SignInImplementation(obj);
+            if(CanSignInExecute(obj))
+                SignInImplementation(obj);
         }
 
         public override void Press0Implementation(object obj){AddDigit("0");}
@@ -137,7 +138,7 @@ namespace KMA.MOOP.ATM.UI.ViewModels
             }
         }
 
-        public override void Button22Implementation(object obj){_numTextBox = 0;}
+        public override void Button21Implementation(object obj){_numTextBox = 0;}
 
         public override void Button23Implementation(object obj){_numTextBox = 1;}
     }

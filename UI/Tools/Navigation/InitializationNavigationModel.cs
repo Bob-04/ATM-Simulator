@@ -36,6 +36,9 @@ namespace KMA.MOOP.ATM.UI.Tools.Navigation
                 case ViewType.Replenish:
                     ViewsDictionary.Add(viewType, new ReplenishCashMenuView());
                     break;
+                case ViewType.AccountInfo:
+                    ViewsDictionary.Add(viewType,new AccountInfoView());
+                    break;
                 default:
                     throw new ArgumentNullException();
             }

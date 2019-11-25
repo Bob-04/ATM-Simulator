@@ -87,11 +87,11 @@ namespace KMA.MOOP.ATM.UI.ViewModels
         }
 
 
-        public override void Button12Implementation(object obj)
+        public override void Button21Implementation(object obj)
         {
             NumTextBox = 0;
         }
-        public override void Button13Implementation(object obj)
+        public override void Button23Implementation(object obj)
         {
             NumTextBox = 1;
         }

@@ -90,6 +90,7 @@
     <Compile Include="Tools\Navigation\INavigationModel.cs" />
     <Compile Include="Tools\Navigation\InitializationNavigationModel.cs" />
     <Compile Include="Tools\RelayCommand.cs" />
+    <Compile Include="ViewModels\AccountInfoViewModel.cs" />
     <Compile Include="ViewModels\AutomaticTransferMenuViewModel.cs" />
     <Compile Include="ViewModels\CashSurplusProcessingViewModel.cs" />
     <Compile Include="ViewModels\LimitExceedingProtectionViewModel.cs" />
@@ -98,6 +99,9 @@
     <Compile Include="ViewModels\ReplenishCashViewModel.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
     <Compile Include="ViewModels\WithdrawViewModel.cs" />
+    <Compile Include="Views\AccountInfoView.xaml.cs">
+      <DependentUpon>AccountInfoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AutomaticTransferMenuView.xaml.cs">
       <DependentUpon>AutomaticTransferMenuView.xaml</DependentUpon>
     </Compile>
@@ -110,6 +114,10 @@
     <Compile Include="Views\WithdrawMenuView.xaml.cs">
       <DependentUpon>WithdrawMenuView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\AccountInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AutomaticTransferMenuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

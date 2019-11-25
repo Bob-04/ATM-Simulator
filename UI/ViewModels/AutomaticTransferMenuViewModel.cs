@@ -123,6 +123,8 @@ namespace KMA.MOOP.ATM.UI.ViewModels
 
         private async void AcceptImplementation(object obj)
         {
+            if (_transferSum.Equals("0"))
+                return;
             LoaderManager.Instance.ShowLoader();
             string res = "";
             var result = await Task.Run(() =>
@@ -253,7 +255,7 @@ namespace KMA.MOOP.ATM.UI.ViewModels
             _numTextBox = 1;
         }
 
-        public override void Button13Implementation(object obj)
+        public override void Button14Implementation(object obj)
         {
             _numTextBox = 2;
         }
