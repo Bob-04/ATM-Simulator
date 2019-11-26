@@ -25,8 +25,8 @@
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0" Grid.ColumnSpan="2" Content="&#9;    Welcome to our ATM!&#10; Please enter your card's data and press Enter" HorizontalContentAlignment="Center" FontSize="17" Margin="0,0,0,0">
         </Label>
-        <Label Grid.Row="1" Grid.Column="0" Content="Enter card number:" FontSize="18" Height="35"/>
-        <TextBox Grid.Row="1" Grid.Column="1" x:Name="Card" FontSize="16" Margin="10,0" IsEnabled="False" Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" MaxLength="16" PreviewTextInput="NumberValidationTextBox" Height="30" />
+        <Label Grid.Row="2" Grid.Column="0" Content="Enter card number:" FontSize="18" Height="35"/>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="Card" FontSize="16" Margin="10,0" IsEnabled="False" Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" MaxLength="16" PreviewTextInput="NumberValidationTextBox" Height="30" />
         <Label Grid.Row="3" Grid.Column="0" Content="Enter pin-password:"  FontSize="18"  Height="35" Width="200" RenderTransformOrigin="0.5,0.5"></Label>
         <PasswordBox Grid.Row="3" Grid.Column="1" Name="PassBox" Margin="10,0" Height="30" IsEnabled="False" FontSize="26" MaxLength="4"  PreviewTextInput="NumberValidationTextBox" PasswordChar="*">
         </PasswordBox>

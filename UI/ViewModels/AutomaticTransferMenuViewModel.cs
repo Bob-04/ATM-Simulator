@@ -15,7 +15,7 @@ namespace KMA.MOOP.ATM.UI.ViewModels
         private string _cardNumber;
         private string _transferSum;
         private string _selectedDate;
-        private bool _freq0;
+        private bool _freq0 = true;
         private bool _freq1;
         private bool _freq2;
         private bool _freq3;
@@ -144,9 +144,24 @@ namespace KMA.MOOP.ATM.UI.ViewModels
                             daysPeriod = 365;
                             break;
                     }
+
+                    DateTime startDate;
+                    if(string.IsNullOrEmpty(_selectedDate))
+                        startDate = DateTime.Now;
+                    else
+                        try
+                        {
+                            startDate = Convert.ToDateTime(_selectedDate);
+                        }
+                        catch (Exception)
+                        {
+                            res = "Incorrect start date";
+                            return false;
+                        }
+
                     res = StationManager.ATMClient.AddTransaction(StationManager.CurrentAccount, 
                         StationManager.CurrentAccount.Pin, _cardNumber, Convert.ToUInt32(_transferSum),
-                        Convert.ToDateTime(_selectedDate), daysPeriod);
+                        startDate, daysPeriod);
                 }
                 catch (Exception ex)
                 {

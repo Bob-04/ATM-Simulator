@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
 using KMA.MOOP.ATM.DBModels;
 using KMA.MOOP.ATM.UI.Tools;
@@ -138,7 +137,7 @@ namespace KMA.MOOP.ATM.UI.ViewModels
             }
         }
 
-        public override void Button21Implementation(object obj){_numTextBox = 0;}
+        public override void Button22Implementation(object obj){_numTextBox = 0;}
 
         public override void Button23Implementation(object obj){_numTextBox = 1;}
     }

@@ -206,15 +206,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\100grn.jpg" />
-    <Resource Include="Resource\10grn.jpg" />
-    <Resource Include="Resource\1grn.jpg" />
-    <Resource Include="Resource\200grn.jpg" />
-    <Resource Include="Resource\20grn.jpg" />
-    <Resource Include="Resource\2grn.jpg" />
-    <Resource Include="Resource\500grn.jpg" />
-    <Resource Include="Resource\50grn.jpg" />
-    <Resource Include="Resource\5grn.jpg" />
     <Resource Include="Resource\Back.jpg" />
   </ItemGroup>
   <ItemGroup>
